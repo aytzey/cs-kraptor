@@ -510,7 +510,7 @@
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/Dizipod.cs3",
     "status": 1,
-    "version": 11,
+    "version": 12,
     "name": "Dizipod",
     "internalName": "Dizipod",
     "authors": [
@@ -519,7 +519,7 @@
       "kerimmkirac"
     ],
     "description": "Güncel diziler, son eklenen yabancı dizileri bu sayfadan takip edebilirsiniz. Son eklenen yabancı dizileri donmadan izlemek için bizi takip etmeye devam edin.",
-    "fileSize": 80012,
+    "fileSize": 79339,
     "repositoryUrl": "https://github.com/Kraptor123/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -529,7 +529,7 @@
     ],
     "iconUrl": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://dizipod.com&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-ee6bc0f0b699e817185706844ec5e76dce4ef0d6da2ef8d03ab69238ba823b1d"
+    "fileHash": "sha256-64c82bbd92dda72ea00e666e7488ae876d4f456ec5144347071e2616ae58d2c5"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/DiziYo.cs3",
@@ -867,7 +867,7 @@
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/KraptorPlus.cs3",
     "status": 1,
-    "version": 82,
+    "version": 83,
     "name": "KraptorPlus",
     "internalName": "KraptorPlus",
     "authors": [
@@ -877,7 +877,7 @@
       "Megix"
     ],
     "description": "Bir çok sitenin birleştiği toplama eklenti.",
-    "fileSize": 590995,
+    "fileSize": 594839,
     "repositoryUrl": "https://github.com/Kraptor123/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -890,7 +890,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/refs/heads/master/.github/icons/logo/kraptorplus.png",
     "apiVersion": 1,
-    "fileHash": "sha256-eea42de583b60237c84b7a0b08e0f50a39e066eedc7d1c1ada29f1bcf54956bf"
+    "fileHash": "sha256-aeea815685bb79a572ec9968bba2c9c6a39d38e21dcace650d985300bf9e3e9a"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/KultFilmler.cs3",
