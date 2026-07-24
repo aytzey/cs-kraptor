@@ -1306,7 +1306,7 @@
       "ByAyzen"
     ],
     "description": "Yerli ve yabancı film izle, Türkçe dublaj ve altyazı seçenekleriyle en yeni ve unutulmamış olan filmleri Full HD kalitesinde online izleyebilirsiniz.",
-    "fileSize": 59870,
+    "fileSize": 59836,
     "repositoryUrl": "https://github.com/Kraptor123/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -1314,7 +1314,7 @@
     ],
     "iconUrl": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://wfilmizle.bar&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-f0077b866d51ec0a3f5ab070046a70dfc1e27e66bb3bc346fcdce492e4664e0c"
+    "fileHash": "sha256-9c9073f5da2421fdffa28262d3acfa153cd3bc9ebe1feba352cf4899d9025a67"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/YabanciDizi.cs3",
@@ -1339,14 +1339,15 @@
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/YeniKaynak.cs3",
     "status": 1,
-    "version": 10,
+    "version": 11,
     "name": "YeniKaynak",
     "internalName": "YeniKaynak",
     "authors": [
-      "kraptor"
+      "kraptor",
+      "ByAyzen"
     ],
     "description": "İran Sinemasının Yeni Adresi - İran Filmleri, İran Dizileri, İslami Filmler, Dini Filmler, Dini Sinema, İslami Diziler,...",
-    "fileSize": 23519,
+    "fileSize": 29282,
     "repositoryUrl": "https://github.com/Kraptor123/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -1355,7 +1356,7 @@
     ],
     "iconUrl": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.yenikaynak.com/&size=16",
     "apiVersion": 1,
-    "fileHash": "sha256-5d741267b5171e4886f10f680ad379c9fc3a36a5dfe6db7346462462401545fc"
+    "fileHash": "sha256-d4663850949c70fb2f14dabd8bfacb7848465439cc22251a4d6f891a350b76b6"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/YesilCamTv.cs3",
