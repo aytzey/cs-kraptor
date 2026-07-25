@@ -12,7 +12,7 @@
       "JustRelaxable"
     ],
     "description": "AnimeciX, animeleri keşfedebileceğiniz ve animeler hakkında her şeyi öğrenebileceğiniz bir paylaşım platformudur.",
-    "fileSize": 171402,
+    "fileSize": 171277,
     "repositoryUrl": "https://github.com/Kraptor123/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -20,7 +20,7 @@
     ],
     "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://animecix.net&size=16",
     "apiVersion": 1,
-    "fileHash": "sha256-fb0d599b17f2bbe1719e6ccfa8cabb8042fd69630cd7a3e329404e1e99b67fcb"
+    "fileHash": "sha256-7c02db24f4617157e5dc00a1bc4f42048ef3b2173eb643d411a3cd53dd373684"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/Animeler.cs3",
@@ -46,8 +46,8 @@
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/Animely.cs3",
-    "status": 2,
-    "version": 3,
+    "status": 1,
+    "version": 4,
     "name": "Animely",
     "internalName": "Animely",
     "authors": [
@@ -65,19 +65,19 @@
     ],
     "iconUrl": "https://play-lh.googleusercontent.com/BIE1R3FVOpIoCPxkx3Erfuw5sVc5wVIbeHAcRuTUGesuvc1S1Cr6KYumGVbn7xABuLc=w240-h480",
     "apiVersion": 1,
-    "fileHash": "sha256-479529551c1f15e7a640fc863068420ede93a7e69fa25a92828c95d551ed41bb"
+    "fileHash": "sha256-ff272f0caeb3ae79ded86e10826ff5e89f1b61f0227a45e14d825107b3be4cb9"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/AnimPow.cs3",
     "status": 1,
-    "version": 6,
+    "version": 7,
     "name": "AnimPow",
     "internalName": "AnimPow",
     "authors": [
       "ByAyzen"
     ],
     "description": "AnimPow da binlerce güncel animeyi reklamsız, 1080p HD kalitesinde Türkçe altyazılı olarak ücretsiz izle! Yeni üyelere 1 haftalık 4K Video Plus anime sistemi denemesi bedava.",
-    "fileSize": 76691,
+    "fileSize": 77372,
     "repositoryUrl": "https://github.com/Kraptor123/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -85,7 +85,7 @@
     ],
     "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://animpow.com/&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-79045dd5fe1ffda15ac65902008b03069104bec65458c8a960ef01d2a05ca414"
+    "fileHash": "sha256-57ab29e68b7e44673ece4049b15a20c064074560da56bdc4d4afac781f035275"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/Anizium.cs3",
@@ -433,7 +433,7 @@
       "kerimmkirac"
     ],
     "description": "1080p yabancı dizi izle. Türkçe altyazılı veya dublaj seçenekleriyle 1080p çözünürlükte yabancı dizilere anında ulaş. Popüler dizileri kesintisiz izle.",
-    "fileSize": 149610,
+    "fileSize": 149567,
     "repositoryUrl": "https://github.com/Kraptor123/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -441,7 +441,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?sz=128&domain=https://dizilla.to",
     "apiVersion": 1,
-    "fileHash": "sha256-b9ce1c3212990e7e0f150039c496c5d406b1c911610c5a815fc0438b4a786db0"
+    "fileHash": "sha256-d96905fc6ab69e9e588c2d12b9ab4a288edb51c6ed8283f3b365097d7d364355"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/DiziMom.cs3",
@@ -497,7 +497,7 @@
       "ByAyzen"
     ],
     "description": "DiziPal Orijinal.",
-    "fileSize": 158724,
+    "fileSize": 158688,
     "repositoryUrl": "https://github.com/Kraptor123/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -505,7 +505,7 @@
     ],
     "iconUrl": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://dizipal932.com&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-dd351d47017992de0a1630771c7c8f2d6c4c0b06d73307e3cccab60c3e3b5caa"
+    "fileHash": "sha256-4592251b6c319dd6adadcb0a526247a2e7ddeefebefe8a94f83c4ca752637657"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/Dizipod.cs3",
@@ -707,7 +707,7 @@
       "ByAyzen"
     ],
     "description": "Sinema zevkini evinize kadar getirdik. Türkiye'nin lider Film sitesinde, en yeni filmleri Full HD izleyin.",
-    "fileSize": 145218,
+    "fileSize": 145164,
     "repositoryUrl": "https://github.com/Kraptor123/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -715,7 +715,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=www.fullhdfilmizlesene.de",
     "apiVersion": 1,
-    "fileHash": "sha256-9d992df32c94ff2f184cd86530c034203b47134955520bb9d44fe48fe729b24e"
+    "fileHash": "sha256-67a88d3abc617f192c8993e9a9b008afebe633d68b7eeecbb56c469cd3d6c431"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/GinikoCanli.cs3",
