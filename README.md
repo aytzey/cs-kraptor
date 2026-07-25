@@ -14,10 +14,14 @@
 
 
 
-  ## Kısa Kod
-  `Kraptor`
+## Kısa Kod
 
-  ---
+| Kod | Sürüm | Durum |
+|-----|-----|-------|
+| `!Kraptor` | 4.8.0 Beta | Geçerli, Py.md kullanıyor |
+| `Kraptor` | 4.8.0 Stabil | VPN gerektirir (Kısa kod sitesi Cutt.ly TR'de yasaklı) |
+
+---
 
 
 
@@ -37,101 +41,6 @@
 
   ---
 
-  # 📦 Eklentiler
-
-  <details open>
-    <summary><b>✅ Aktif Eklentiler (57)</b></summary>
-    <br>
-    <table>
-      <tr>
-        <th>Eklenti</th>
-        <th>Geliştiriciler</th>
-        <th>İçerik Türleri</th>
-        <th>Durum</th>
-      </tr>
-      <tr><td>AnimeciX</td><td>kraptor, ByAyzen, inatchii, JustRelaxable</td><td>Anime</td><td>Aktif</td></tr>
-      <tr><td>Animeler</td><td>kraptor, ByAyzen, kerimmkirac</td><td>Anime</td><td>Aktif</td></tr>
-      <tr><td>AnimPow</td><td>ByAyzen</td><td>Anime</td><td>Aktif</td></tr>
-      <tr><td>Anizium</td><td>kerimmkirac, ByAyzen</td><td>Anime Film, Anime</td><td>Aktif</td></tr>
-      <tr><td>AsyaAnimeleri</td><td>kraptor</td><td>Anime</td><td>Aktif</td></tr>
-      <tr><td>AsyaFanatiklerim</td><td>kraptor, kerimmkirac</td><td>Asya Dizileri</td><td>Aktif</td></tr>
-      <tr><td>AsyaMinik</td><td>kraptor</td><td>Asya Dizileri</td><td>Aktif</td></tr>
-      <tr><td>AsyaWatch</td><td>kerimmkirac</td><td>Asya Dizileri</td><td>Aktif</td></tr>
-      <tr><td>BelgeselX</td><td>kraptor, ByAyzen</td><td>Belgesel</td><td>Aktif</td></tr>
-      <tr><td>CizgiMax</td><td>kraptor, ByAyzen</td><td>Çizgi Film</td><td>Aktif</td></tr>
-      <tr><td>CizgiveDizi</td><td>kraptor</td><td>Çizgi Film</td><td>Aktif</td></tr>
-      <tr><td>Ddizi</td><td>kraptor</td><td>Dizi</td><td>Aktif</td></tr>
-      <tr><td>DiziAsia</td><td>kerimmkirac</td><td>Asya Dizileri</td><td>Aktif</td></tr>
-      <tr><td>DiziAsya</td><td>kerimmkirac</td><td>Asya Dizileri</td><td>Aktif</td></tr>
-      <tr><td>DiziBox</td><td>kraptor, kerimmkirac, ByAyzen</td><td>Dizi</td><td>Aktif</td></tr>
-      <tr><td>DiziFilmORG</td><td>ByAyzen</td><td>Film, Dizi</td><td>Aktif</td></tr>
-      <tr><td>Dizigecesi</td><td>ByAyzen</td><td>Film, Dizi</td><td>Aktif</td></tr>
-      <tr><td>DiziKorea</td><td>Kerimmkirac, kraptor, ByAyzen</td><td>Asya Dizileri</td><td>Aktif</td></tr>
-      <tr><td>DiziLife</td><td>kerimmkirac, kraptor, ByAyzen</td><td>Film, Dizi</td><td>Aktif</td></tr>
-      <tr><td>Dizilla</td><td>kraptor, kerimmkirac</td><td>Dizi</td><td>Aktif</td></tr>
-      <tr><td>DiziMom</td><td>kraptor</td><td>Dizi</td><td>Aktif</td></tr>
-      <tr><td>DiziPal</td><td>kraptor, ByAyzen</td><td>Film, Dizi</td><td>Aktif</td></tr>
-      <tr><td>DiziPalOrijinal</td><td>kraptor, kerimmkirac, ByAyzen</td><td>Dizi</td><td>Aktif</td></tr>
-      <tr><td>Dizipod</td><td>kraptor, ByAyzen , kerimmkirac</td><td>Film, Dizi, Asya Dizileri</td><td>Aktif</td></tr>
-      <tr><td>DiziYo</td><td>kraptor, ByAyzen</td><td>Dizi</td><td>Aktif</td></tr>
-      <tr><td>DiziYou</td><td>ByAyzen</td><td>Dizi</td><td>Aktif</td></tr>
-      <tr><td>FilmEkseni</td><td>kraptor, ByAyzen</td><td>Film</td><td>Aktif</td></tr>
-      <tr><td>FilmHane</td><td>kraptor, ByAyzen</td><td>Film</td><td>Aktif</td></tr>
-      <tr><td>FilmMakinesi</td><td>kraptor, usdogu, nikyokki</td><td>Film, Dizi</td><td>Aktif</td></tr>
-      <tr><td>FilmModu</td><td>kraptor</td><td>Film</td><td>Aktif</td></tr>
-      <tr><td>Filmzal</td><td>kraptor</td><td>Film</td><td>Aktif</td></tr>
-      <tr><td>FullHDFilmizlesene</td><td>kraptor, ByAyzen</td><td>Film</td><td>Aktif</td></tr>
-      <tr><td>GinikoCanli</td><td>kraptor</td><td>Canlı Yayın</td><td>Aktif</td></tr>
-      <tr><td>HDFilmCehennemi</td><td>kraptor</td><td>Film, Dizi</td><td>Aktif</td></tr>
-      <tr><td>HDFilmDelisi</td><td>ByAyzen</td><td>Film</td><td>Aktif</td></tr>
-      <tr><td>HDFilmizle</td><td>ByAyzen</td><td>Film</td><td>Aktif</td></tr>
-      <tr><td>JetFilmizle</td><td>kraptor, ByAyzen</td><td>Film</td><td>Aktif</td></tr>
-      <tr><td>KickTR</td><td>ByAyzen, kraptor</td><td>Canlı Yayın</td><td>Aktif</td></tr>
-      <tr><td>KraptorPlus</td><td>kraptor, Phisher98, ByAyzen</td><td>Dizi, Film, Anime, Çizgi Film, Asya Dizileri, Anime Film</td><td>Aktif</td></tr>
-      <tr><td>KultFilmler</td><td>kraptor</td><td>Film, Dizi</td><td>Aktif</td></tr>
-      <tr><td>MirrorVerse</td><td>kraptor, NivinCNC, ByAyzen</td><td>Film, Dizi</td><td>Aktif</td></tr>
-      <tr><td>OnePaceTr</td><td>kraptor</td><td>Anime</td><td>Aktif</td></tr>
-      <tr><td>OpenAnime</td><td>kraptor, ByAyzen</td><td>Anime, Anime Film</td><td>Aktif</td></tr>
-      <tr><td>RareFilmm</td><td>ByAyzen</td><td>Film</td><td>Aktif</td></tr>
-      <tr><td>RecTV</td><td>Eagle, kraptor, ByAyzen</td><td>Film, Canlı Yayın, Dizi</td><td>Aktif</td></tr>
-      <tr><td>SeiCode</td><td>kraptor, ByAyzen, kerimmkirac</td><td>Anime</td><td>Aktif</td></tr>
-      <tr><td>SelcukFlix</td><td>kerimmkirac</td><td>Film, Dizi</td><td>Aktif</td></tr>
-      <tr><td>SetFilmIzle</td><td>kraptor, kerimmkirac, ByAyzen</td><td>Film</td><td>Aktif</td></tr>
-      <tr><td>SezonlukDizi</td><td>kraptor, kerimmkirac</td><td>Dizi</td><td>Aktif</td></tr>
-      <tr><td>SinemaCX</td><td>kraptor</td><td>Film</td><td>Aktif</td></tr>
-      <tr><td>SineWix</td><td>kraptor, ByAyzen</td><td>Film, Dizi, Anime, Asya Dizileri, Çizgi Film</td><td>Aktif</td></tr>
-      <tr><td>Sinezy</td><td>kraptor</td><td>Film</td><td>Aktif</td></tr>
-      <tr><td>TrAnimeIzle</td><td>kraptor</td><td>Anime</td><td>Aktif</td></tr>
-      <tr><td>TurkAnime</td><td>kraptor, ByAyzen</td><td>Anime, Anime Film</td><td>Aktif</td></tr>
-      <tr><td>Turkdizileri</td><td>ByAyzen</td><td>Film</td><td>Aktif</td></tr>
-      <tr><td>TvDiziler</td><td>kraptor</td><td>Dizi</td><td>Aktif</td></tr>
-      <tr><td>WebDramaTurkey</td><td>kraptor, kerimmkirac, ByAyzen</td><td>Asya Dizileri</td><td>Aktif</td></tr>
-      <tr><td>WFilmizle</td><td>ByAyzen</td><td>Film</td><td>Aktif</td></tr>
-      <tr><td>YabanciDizi</td><td>kraptor</td><td>Dizi</td><td>Aktif</td></tr>
-      <tr><td>YeniKaynak</td><td>kraptor</td><td>Film, Dizi</td><td>Aktif</td></tr>
-      <tr><td>Youtube</td><td>Eagle, ByAyzen, kraptor</td><td>Film, Canlı Yayın, Müzik, Dizi</td><td>Aktif</td></tr>
-      <tr><td>YTS</td><td>kraptor, Phisher98, ByAyzen</td><td>Torrent</td><td>Aktif</td></tr>
-    </table>
-  </details>
-
-  <details>
-    <summary><b>⛔ Devre Dışı Eklentiler (4)</b></summary>
-    <br>
-    <table>
-      <tr>
-        <th>Eklenti</th>
-        <th>Geliştiriciler</th>
-        <th>İçerik Türleri</th>
-        <th>Durum</th>
-      </tr>
-      <tr><td>Animely</td><td>kraptor, ByAyzen</td><td>Anime, Anime Film, OVA</td><td>Devre Dışı</td></tr>
-      <tr><td>InatBox</td><td>Eagle, kraptor, JustRelaxable</td><td>Film, Dizi, Canlı Yayın</td><td>Devre Dışı</td></tr>
-      <tr><td>UgurFilm</td><td>kraptor, kerimmkirac</td><td>Film</td><td>Devre Dışı</td></tr>
-      <tr><td>WebteIzle</td><td>kraptor, ByAyzen</td><td>Film</td><td>Devre Dışı</td></tr>
-    </table>
-  </details>
-
-  ---
 
   # 👨‍💻 Geliştiriciler
 
