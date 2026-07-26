@@ -276,14 +276,14 @@
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/DiziAsia.cs3",
     "status": 1,
-    "version": 19,
+    "version": 20,
     "name": "DiziAsia",
     "internalName": "DiziAsia",
     "authors": [
       "kerimmkirac"
     ],
     "description": "DiziAsia - Asya Dizileri İzle",
-    "fileSize": 25638,
+    "fileSize": 25718,
     "repositoryUrl": "https://github.com/Kraptor123/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -291,7 +291,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=diziasia.com",
     "apiVersion": 1,
-    "fileHash": "sha256-f9d89c7a0597a8246b06eda8a8610817ca4d65b8fccdbb36b012c9caf717d190"
+    "fileHash": "sha256-3ef24a02d63c5d5aab53a20a4d2435221d45790c8c75005c6ab17ca2cca40a29"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/DiziAsya.cs3",
@@ -781,14 +781,14 @@
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/HDFilmizle.cs3",
     "status": 1,
-    "version": 24,
+    "version": 25,
     "name": "HDFilmizle",
     "internalName": "HDFilmizle",
     "authors": [
       "ByAyzen"
     ],
     "description": "En yeni ve popüler filmleri 1080p kalitesinde Türkçe dublaj altyazılı izle. Aksiyon, macera, komedi, dram ve daha fazlası film izle sayfamızda.",
-    "fileSize": 61412,
+    "fileSize": 61436,
     "repositoryUrl": "https://github.com/Kraptor123/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -796,7 +796,7 @@
     ],
     "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.hdfilmizle.life/rally-caps/&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-5fa9c2919ef93e81b40b09124ea6abc199efd052f103b814ed95d05644f9e70d"
+    "fileHash": "sha256-72ce2862c4b8042753d3445f4063b7a9ee06d5b9e40768108579c4de34d8ccb3"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/InatBox.cs3",
