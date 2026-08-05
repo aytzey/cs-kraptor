@@ -2,7 +2,7 @@
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/AnimeciX.cs3",
     "status": 1,
-    "version": 87,
+    "version": 88,
     "name": "AnimeciX",
     "internalName": "AnimeciX",
     "authors": [
@@ -12,7 +12,7 @@
       "JustRelaxable"
     ],
     "description": "AnimeciX, animeleri keşfedebileceğiniz ve animeler hakkında her şeyi öğrenebileceğiniz bir paylaşım platformudur.",
-    "fileSize": 172056,
+    "fileSize": 172055,
     "repositoryUrl": "https://github.com/Kraptor123/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -20,7 +20,7 @@
     ],
     "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://animecix.net&size=16",
     "apiVersion": 1,
-    "fileHash": "sha256-7db42f65cc0a9b96a5e0c0ab2170a57e5839935ba5d4e28d9a8f09e4bd1dccb5"
+    "fileHash": "sha256-bfcf2394b782cff98c985f1b62c78daf538d44518506e5590c1edbd5b65dad38"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/Animeler.cs3",
@@ -425,7 +425,7 @@
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/Dizilla.cs3",
     "status": 1,
-    "version": 110,
+    "version": 111,
     "name": "Dizilla",
     "internalName": "Dizilla",
     "authors": [
@@ -441,7 +441,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?sz=128&domain=https://dizilla.to",
     "apiVersion": 1,
-    "fileHash": "sha256-dfb3d99ad93de166c85a7a3b991843b462efbd37f2cfd3e55aebff0e5bb50cc5"
+    "fileHash": "sha256-aab334fad3a465dc2eef948b2883f2e5a1b05e33eeac2ec66ebc7dea728c7c08"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/DiziMom.cs3",
@@ -488,7 +488,7 @@
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/DiziPalOrijinal.cs3",
     "status": 1,
-    "version": 44,
+    "version": 45,
     "name": "DiziPalOrijinal",
     "internalName": "DiziPalOrijinal",
     "authors": [
@@ -505,7 +505,7 @@
     ],
     "iconUrl": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://dizipal932.com&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-39f7d88afedf0f91fa6285cd200f229a0563fecfb3dee6808b091af901987518"
+    "fileHash": "sha256-676a6380e361598442b8da658761d03d53b39a66456a916e7508d5d47971e82e"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/Dizipod.cs3",
@@ -699,7 +699,7 @@
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/FullHDFilmizlesene.cs3",
     "status": 1,
-    "version": 71,
+    "version": 72,
     "name": "FullHDFilmizlesene",
     "internalName": "FullHDFilmizlesene",
     "authors": [
@@ -715,7 +715,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=www.fullhdfilmizlesene.de",
     "apiVersion": 1,
-    "fileHash": "sha256-aa7443abd10a6b58ee73fdd443f0af43fcc123b3ffd51d2527cd21d7988c3551"
+    "fileHash": "sha256-1256e6bb9d3d6ef56355441a3d2580e957a153d56abc4eaad1513bc6d95e3f31"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/GinikoCanli.cs3",
