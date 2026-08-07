@@ -152,8 +152,8 @@
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/AsyaMinik.cs3",
-    "status": 1,
-    "version": 16,
+    "status": 0,
+    "version": 17,
     "name": "AsyaMinik",
     "internalName": "AsyaMinik",
     "authors": [
@@ -168,7 +168,7 @@
     ],
     "iconUrl": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://asyaminik.com/&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-0e58fec26c38a4fc3cd6ead6507f5059c4c03ab0f3a295e3a40f8f9edd2dda66"
+    "fileHash": "sha256-4a72eff8d5fa0cfa866f6bdcc11de28772fc023d559a692b2c72c09c9638d6cb"
   },
   {
     "url": "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/AsyaWatch.cs3",
