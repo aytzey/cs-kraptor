@@ -1,7 +1,7 @@
 <div align="center">
 
-  <a href="https://kraptor123.github.io/redirect/?r=cloudstreamrepo://raw.githubusercontent.com/Kraptor123/cs-kraptor/refs/heads/master/repo.json">
-    <img src="https://raw.githubusercontent.com/Kraptor123/cs-kraptor/refs/heads/master/.github/icons/logo/kraptorlogo.png" width="400" alt="Kraptor Logo">
+  <a href="cloudstreamrepo://raw.githubusercontent.com/aytzey/cs-kraptor/refs/heads/master/repo.json">
+    <img src="https://raw.githubusercontent.com/aytzey/cs-kraptor/refs/heads/master/.github/icons/logo/kraptorlogo.png" width="400" alt="Kraptor Logo">
   </a>
 
   <h3>
