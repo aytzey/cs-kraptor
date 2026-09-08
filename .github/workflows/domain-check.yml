@@ -1,0 +1,18 @@
+name: Domain check
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/domain_check.py
+      - run: |
+          git config user.name "domain-check"
+          git config user.email "domain-check@users.noreply.github.com"
+          git add doms/eklenti_domainleri.txt
+          git diff --cached --quiet || git commit -m "Domain güncellemesi $(date -u +%Y-%m-%d\ %H:%M)" && git push
