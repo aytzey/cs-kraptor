@@ -800,17 +800,15 @@
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/InatBox.cs3",
-    "status": 2,
-    "version": 57,
+    "status": 1,
+    "version": 58,
     "name": "InatBox",
     "internalName": "InatBox",
     "authors": [
-      "Eagle",
-      "kraptor",
-      "JustRelaxable"
+      "Dr.Octagon"
     ],
-    "description": "Bu eklenti düzenli güncelleme almayacaktır!",
-    "fileSize": 57821,
+    "description": "Güncel sunucu protokolü ve saat eşitleme desteği.",
+    "fileSize": 49721,
     "repositoryUrl": "https://github.com/aytzey/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -820,7 +818,7 @@
     ],
     "iconUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh3vCp6N1K4bECoYRQD-cisJF2_6V_Hk01ZhDmoPR2JuM8O5qr4MqrPO1munM9cRlleBBSK6odYhLtDBWv4E3vhPhynlmS5hVVtJZShHoGA5REQ8_3v8SIlccTEqzVQu2UJyNYQdJNrKIfWy66RQeT0D-CcmFCbHPz5023H6p2v5fv4NVloZ5Rqo_yGrIY/s320/iNat-Box-App.png",
     "apiVersion": 1,
-    "fileHash": "sha256-e4dcc3c3d9171289dcfbebe7d43f80a8cdf4ca8f8a9b346c69c1fa2b1be193dd"
+    "fileHash": "sha256-172dbb3c26cf7cb7b1b30431ee473b7da95592edbe540a76dab5a2f5f96bbce1"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/JetFilmizle.cs3",
