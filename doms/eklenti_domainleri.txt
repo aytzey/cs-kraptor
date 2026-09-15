@@ -12,7 +12,7 @@
 |Ddizi:https://www.ddizi.im
 |DizifilmORG:https://dizifilmizle.to
 |DiziAsia:https://diziasia.com
-|DiziAsya:https://api.diziasya.com
+|DiziAsya:https://diziasya.com
 |DiziBox:https://www.dizibox.live
 |DiziGecesi:https://dizigecesi.com
 |DiziKorea:https://dizikorea3.com
@@ -60,7 +60,7 @@
 |TrtCocuk:https://www.trtcocuk.net.tr
 |Tv8:https://www.tv8.com.tr
 |TvDiziler:https://tvdiziler.tv
-|UgurFilm:https://ugurfilm8.com
+|UgurFilm:https://ugurfilm3.xyz
 |WebDramaTurkey:https://webdramaturkey2.com
 |WFilmizle:https://www.wfilmizle.pw
 |YabanciDizi:https://yabancidizi.news
