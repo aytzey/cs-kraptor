@@ -1,0 +1,15 @@
+*.iml
+../yedek/cs-Karma/.gradle
+/local.properties
+/.idea
+/.gradle
+.gradle
+.DS_Store
+/build
+**/build
+/captures
+*.lock
+.externalNativeBuild
+.cxx
+local.properties
+.vscode
