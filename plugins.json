@@ -720,14 +720,14 @@
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/GinikoCanli.cs3",
     "status": 1,
-    "version": 16,
+    "version": 17,
     "name": "GinikoCanli",
     "internalName": "GinikoCanli",
     "authors": [
       "kraptor"
     ],
     "description": "Vpn Gerekli! Dünyanın tüm ülkelerinden ücretsiz çevrimiçi TV.",
-    "fileSize": 17903,
+    "fileSize": 17732,
     "repositoryUrl": "https://github.com/aytzey/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -735,7 +735,7 @@
     ],
     "iconUrl": "https://www.giniko.com/images/favicon.ico",
     "apiVersion": 1,
-    "fileHash": "sha256-01b52a0b3c86dac364d444f4d95d5748db101e618d6aecbdfca1468386a7c260"
+    "fileHash": "sha256-f9a9638839fba4e8fc3372c425ff2d69c4abfbcfa9ca0a5aad15062030c385cd"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/HDFilmCehennemi.cs3",
@@ -865,7 +865,7 @@
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/KraptorPlus.cs3",
     "status": 1,
-    "version": 87,
+    "version": 88,
     "name": "KraptorPlus",
     "internalName": "KraptorPlus",
     "authors": [
@@ -875,7 +875,7 @@
       "Megix"
     ],
     "description": "Bir çok sitenin birleştiği toplama eklenti.",
-    "fileSize": 628229,
+    "fileSize": 623226,
     "repositoryUrl": "https://github.com/aytzey/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -888,7 +888,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/aytzey/cs-kraptor/refs/heads/master/.github/icons/logo/kraptorplus.png",
     "apiVersion": 1,
-    "fileHash": "sha256-706459836c2eda9590c1b801f74477a4435537682e1d9f5b128465ba1fe1e4fe"
+    "fileHash": "sha256-f22996924d87f03ebd33507352525d16a2d50d97f34395b1eab182eb774cfde9"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/KultFilmler.cs3",
