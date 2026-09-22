@@ -12,7 +12,7 @@
       "JustRelaxable"
     ],
     "description": "AnimeciX, animeleri keşfedebileceğiniz ve animeler hakkında her şeyi öğrenebileceğiniz bir paylaşım platformudur.",
-    "fileSize": 172061,
+    "fileSize": 172062,
     "repositoryUrl": "https://github.com/aytzey/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -20,7 +20,7 @@
     ],
     "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://animecix.net&size=16",
     "apiVersion": 1,
-    "fileHash": "sha256-d5467ae574e869dbc66e51cf1fdfc99820f4f4117597f1ae49a19bd469f2daf5"
+    "fileHash": "sha256-031baec963b6ed3d199d5a67e5d5ce081a491aabfdce44eaa44907626bb31c1f"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/Animeler.cs3",
@@ -42,7 +42,7 @@
     ],
     "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://animeler.pw/&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-7c3e22c99de622d265fddad4c4233101db25956f2a7367f648561a3cb741061f"
+    "fileHash": "sha256-b6d77b0aad2db5e09c33c7f5710333d365a4ea0eb61b4c94c2fb83b7c78d7711"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/Animely.cs3",
@@ -65,7 +65,7 @@
     ],
     "iconUrl": "https://play-lh.googleusercontent.com/BIE1R3FVOpIoCPxkx3Erfuw5sVc5wVIbeHAcRuTUGesuvc1S1Cr6KYumGVbn7xABuLc=w240-h480",
     "apiVersion": 1,
-    "fileHash": "sha256-f0822e297e21e0576cd3919b7e13694b4f4754903170416d0f4b7bc19c546d82"
+    "fileHash": "sha256-97ff6af8b4cb4b2f66302df3a645cabd3c0e531b4e4027fd3254fda0fa2e680a"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/AnimPow.cs3",
@@ -77,7 +77,7 @@
       "ByAyzen"
     ],
     "description": "AnimPow da binlerce güncel animeyi reklamsız, 1080p HD kalitesinde Türkçe altyazılı olarak ücretsiz izle! Yeni üyelere 1 haftalık 4K Video Plus anime sistemi denemesi bedava.",
-    "fileSize": 77378,
+    "fileSize": 77377,
     "repositoryUrl": "https://github.com/aytzey/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -85,7 +85,7 @@
     ],
     "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://animpow.com/&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-4d3f691b88c9be0d54e08da58a224722cdf02a2ca8f10fdf63cafaa6c370e957"
+    "fileHash": "sha256-fa471622680457338da00a353db33a1e22276f7d3354133e0e1ad43230c435ac"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/Anizium.cs3",
@@ -107,7 +107,7 @@
     ],
     "iconUrl": "https://anizium.co/assets/images/logo.png",
     "apiVersion": 1,
-    "fileHash": "sha256-2c5b502b5960f1d9f9aa1159589f4bf4c28848fd19c75be0197c79577bf842a4"
+    "fileHash": "sha256-4c5f80394e518474ea77e40c128a10ad4cb2b7564e65bd941da068ec6a206070"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/AsyaAnimeleri.cs3",
@@ -127,7 +127,7 @@
     ],
     "iconUrl": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://asyaanimeleri.top/&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-15e922dfb5723e85fe37c0de5e728ef601a01bc768cbefb7a16739614d937f4a"
+    "fileHash": "sha256-4c756d47abc007ff642715bab52010d6b6282e51f469ab1e2407af42ce3564a7"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/AsyaFanatiklerim.cs3",
@@ -140,7 +140,7 @@
       "kerimmkirac"
     ],
     "description": "Asya Fanatikleri, asya dizilerini izleme imkanı sunar. Kore dizileri izle, asyafanatikleri kore dizileri, tayvan dizileri izle, çin dizileri izle, anime izle.",
-    "fileSize": 28605,
+    "fileSize": 28606,
     "repositoryUrl": "https://github.com/aytzey/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -148,7 +148,7 @@
     ],
     "iconUrl": "https://asyafanatiklerim.com/wp-content/uploads/2018/08/md_5aaeb1de75bea.png",
     "apiVersion": 1,
-    "fileHash": "sha256-ce4eb9f45e0f7e80df667e09d117702718fe22db9094bfcc0574f190b7ff10d9"
+    "fileHash": "sha256-b9c9c90ea415ed7dd0ea4d183480eb59cd36bd56352f4ce447816fd25c2e3dec"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/AsyaMinik.cs3",
@@ -188,7 +188,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=asyawatch.com",
     "apiVersion": 1,
-    "fileHash": "sha256-8fc855798d4a6a589ee3ac36eb1478954d3bd7b02e4b2921ad31436b6e23233d"
+    "fileHash": "sha256-bcb3b5cb237cad99ae7dd9d970b6fcc77932b92772bb0678406337416c2aba5b"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/BelgeselX.cs3",
@@ -209,7 +209,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=belgeselx.com",
     "apiVersion": 1,
-    "fileHash": "sha256-428dce066a60490dc9fec621824d023a76b0fba247b0307fa0f857d0256e91f1"
+    "fileHash": "sha256-f31d5dbf90db245e560edf6888e8f188d75485a5e83fc2d356bc1a2effbc2adb"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/CizgiMax.cs3",
@@ -230,7 +230,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=cizgimax.online",
     "apiVersion": 1,
-    "fileHash": "sha256-d9c33fe20638d4125a85d71aabd878a7a95adfe591523e5529bd77edb3e1e9b5"
+    "fileHash": "sha256-b99aa1c2b6c1c73264c4769786a15bba41c9fb6444a2ce18bab60a809a785161"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/CizgiveDizi.cs3",
@@ -251,7 +251,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=cizgivedizi.com",
     "apiVersion": 1,
-    "fileHash": "sha256-c78df1d332c622bda7e5bad05be8dc9230039c50cd56abee566fbdd3965f5556"
+    "fileHash": "sha256-4d0020ce5ceb10a7e07cb18c42c28dcbc3120426a112d413454edf2345b79d59"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/Ddizi.cs3",
@@ -271,7 +271,7 @@
     ],
     "iconUrl": "https://www.ddizi.im/images/logo.png",
     "apiVersion": 1,
-    "fileHash": "sha256-bcd8600232b791f906cc8bfdaac761a839f9f86395a8e39a856176e97049095f"
+    "fileHash": "sha256-9128e53d9be73af0d3a3708565f9c65a0c91f1dc50d00fc65546f357bb391b8a"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/DiziAsia.cs3",
@@ -291,7 +291,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=diziasia.com",
     "apiVersion": 1,
-    "fileHash": "sha256-a0e1767baf49d2c4a01a4b2fdb150103a02a33aa3856c6107eac8e82756674e2"
+    "fileHash": "sha256-ac452b458b521c42841b92c3ef71344fa1cd8c85813445cacc750afa6b0a801b"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/DiziAsya.cs3",
@@ -311,7 +311,7 @@
     ],
     "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.diziasya.com&size=32",
     "apiVersion": 1,
-    "fileHash": "sha256-9a450703dc8302a0c5043b07072cf24c7cede89131673515950ecbdb38f350d9"
+    "fileHash": "sha256-c850dfe53d8a3b4c20e87b96205a0366a19ca89c4d03a2e5d5fe67afd6190995"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/DiziBox.cs3",
@@ -333,7 +333,7 @@
     ],
     "iconUrl": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.dizibox.de&size=16",
     "apiVersion": 1,
-    "fileHash": "sha256-85d8f4430b55abd7709ee4621f22e432ce498f9951fd361cec3155adf239322b"
+    "fileHash": "sha256-63faf93fb3bdcc31af6b847c182cd29eb8dc036abb0eba6511f3a004b8d340bf"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/DiziFilmORG.cs3",
@@ -354,7 +354,7 @@
     ],
     "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://dizifilm.org/dizi/breaking-bad/sezon-1/bolum-2&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-2ad262bc87fb248fc617162f74cc4aea57a8634f74d7c1d0a7ee412484eb71d4"
+    "fileHash": "sha256-34b20c74a281a0770e4c57cfaea48c2175ebd96023be95e4034f89ec2a450c35"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/Dizigecesi.cs3",
@@ -375,7 +375,7 @@
     ],
     "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://dizigecesi.com/tr&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-4e160dc420631eccd233c05d592fdfc9ff8026f9498f20862d17fa928d6c68ba"
+    "fileHash": "sha256-f4902a5c5e7d021832d2f9c335d67e80be971958c5f77d1283f4f248578cc696"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/DiziKorea.cs3",
@@ -397,7 +397,7 @@
     ],
     "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://dizikorea.pw&size=16",
     "apiVersion": 1,
-    "fileHash": "sha256-e5c0e9833bc5da2ee13261a197f451f383489f45e2d6ac024ef527923bd8ff59"
+    "fileHash": "sha256-3d0729989a9fb611f001a9f86d02692658194624c23c14e3024f5c004ea413e9"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/DiziLife.cs3",
@@ -420,7 +420,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=dizi18.life",
     "apiVersion": 1,
-    "fileHash": "sha256-1154dfbd0b362939bfd49ccc434203b4fa87de3413c63f6485c70583c532c0b2"
+    "fileHash": "sha256-f59cf16fb13c420e69b3bcef50212ac63334b308ebd6efde8859e8fad3b4267c"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/Dizilla.cs3",
@@ -441,7 +441,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?sz=128&domain=https://dizilla.to",
     "apiVersion": 1,
-    "fileHash": "sha256-c5ce96f571e97cd1734fc595065c7c38d7b05f6614811f4e92010ef8adc1609f"
+    "fileHash": "sha256-689ecee1550aa86c9b53f40ee4a49493c4e333c1622498de0327da78191bf806"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/DiziMom.cs3",
@@ -461,7 +461,7 @@
     ],
     "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.dizimom.mom&size=32",
     "apiVersion": 1,
-    "fileHash": "sha256-bee5ad9e6e96abdc0f9be4ef6a269f2eb934d3faa706b519701c6c8e2c3fcabb"
+    "fileHash": "sha256-7779eb99afe8c96fffa5e161e8752d4ad1f6bea01d8f797bbf803d68acabe362"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/DiziPal.cs3",
@@ -474,7 +474,7 @@
       "ByAyzen"
     ],
     "description": "En yeni dizileri güvenli ve hızlı şekilde sunar.",
-    "fileSize": 38256,
+    "fileSize": 38257,
     "repositoryUrl": "https://github.com/aytzey/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -483,7 +483,7 @@
     ],
     "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://dizipal.im/&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-9cfd16699191c9d6723167b0a56d5bb12f2ff3eb957f61a8420d13c7600bde83"
+    "fileHash": "sha256-b114f9a60754769d2b21dd3de9cf63171dbf9c6917794369337f38f0caa384f8"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/DiziPalOrijinal.cs3",
@@ -505,7 +505,7 @@
     ],
     "iconUrl": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://dizipal932.com&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-df91c5334133f6c6381da318347da21c1b090da90f0668bd6daf201d7583eed2"
+    "fileHash": "sha256-1a4524422ace24370b8bba9f0b9e256b844619cf5f48ffb63670020a5b43f6bf"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/Dizipod.cs3",
@@ -529,7 +529,7 @@
     ],
     "iconUrl": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://dizipod.com&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-46a17cad52f187a76f004b82b4f9cbf915e5bcb3d132640db233477d40df2eca"
+    "fileHash": "sha256-f0299334efc205b85724e336f72dd5e9fdf77aa4d788304463116d17684bc7ba"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/DiziYo.cs3",
@@ -542,7 +542,7 @@
       "ByAyzen"
     ],
     "description": "Diziyo ile Yabancı Dizi, Film, Anime, Çizgi-Film izle.",
-    "fileSize": 36758,
+    "fileSize": 36757,
     "repositoryUrl": "https://github.com/aytzey/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -550,7 +550,7 @@
     ],
     "iconUrl": "https://i.imgur.com/zQYsL6Z.png",
     "apiVersion": 1,
-    "fileHash": "sha256-b06e90151c86ba3a6759c6b8301929aeb7c2fc040a0f316d1eb96eb35652f6a8"
+    "fileHash": "sha256-285c5d5e67a67c1ff4434d1eb17a323e56418b1c1022a2bbd592f2667e1c9b74"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/DiziYou.cs3",
@@ -570,7 +570,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=www.diziyou.co",
     "apiVersion": 1,
-    "fileHash": "sha256-aa6f775243e9792efacb48fc621311f638709578ccdf8d32f8a1455b8ee429a5"
+    "fileHash": "sha256-aa14dbbb0c2e40a530a6a25de829f953ef1253c05ef1ca531c5b74137ad822b3"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/DramaDizilerim.cs3",
@@ -611,7 +611,7 @@
     ],
     "iconUrl": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://filmekseni.net/&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-5d14b67cf96e62c983c8a6a0171efb76be61c37cde1fc20ace8462070f4cdec4"
+    "fileHash": "sha256-3b6e11df69046eb4db3e2221f38ed29360e58799272f117cef7980ed3fca35f6"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/FilmHane.cs3",
@@ -623,7 +623,7 @@
       "kraptor",
       "ByAyzen"
     ],
-    "fileSize": 60864,
+    "fileSize": 60863,
     "repositoryUrl": "https://github.com/aytzey/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -631,7 +631,7 @@
     ],
     "iconUrl": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRbK_Pe3vpG-yUVt1NvckDpaD6COLDitImrBUnHfAVA4fawhijE",
     "apiVersion": 1,
-    "fileHash": "sha256-a61fb06bec7aed648094ed7dd0f3a04b8a0444db07e764669f7d4ecc59b2327d"
+    "fileHash": "sha256-4c112bbc0aa49647ebff31ad90d9eb55d4e51d2618be2a38daa59176bf378cbd"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/FilmMakinesi.cs3",
@@ -654,7 +654,7 @@
     ],
     "iconUrl": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://filmmakinesi.tv&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-76d4b4f7a2ed4a1d51b4e6c8d1624a208bdb6bb69bf14d4b3b49abd9d76c2b56"
+    "fileHash": "sha256-7786d602f9d73cde99e0aeecf37bfd8efac01e17b89e5b2e70082c9d54fa2ae4"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/FilmModu.cs3",
@@ -674,7 +674,7 @@
     ],
     "iconUrl": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.filmmodu.one/&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-817aeb4becb1c0ffe96c44d680d7f751b1e41a1be1fc8b587e5290586c9ebd74"
+    "fileHash": "sha256-f6581f7272b6714280bf665b3a413066a11e3cf142b30309c77045d257d1ec1c"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/Filmzal.cs3",
@@ -694,7 +694,7 @@
     ],
     "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://filmzal.me/&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-06d660b6b555519412955fe49e18fa27977343314d020570dc02a0060f23fe3b"
+    "fileHash": "sha256-f8ccca725fa767c40f6d95489706ec40d56a0ee197a903d3c391ce1a70cbee40"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/FullHDFilmizlesene.cs3",
@@ -715,7 +715,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=www.fullhdfilmizlesene.de",
     "apiVersion": 1,
-    "fileHash": "sha256-cb91bda0358401ea75716e3673e181852cc3c83556f1a332a828a432a69a188b"
+    "fileHash": "sha256-9a99c6aa6f2ef5f644116200a19956dc2c1212d77560d8338e222b89badcf472"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/GinikoCanli.cs3",
@@ -727,7 +727,7 @@
       "kraptor"
     ],
     "description": "Vpn Gerekli! Dünyanın tüm ülkelerinden ücretsiz çevrimiçi TV.",
-    "fileSize": 17732,
+    "fileSize": 17715,
     "repositoryUrl": "https://github.com/aytzey/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -735,7 +735,7 @@
     ],
     "iconUrl": "https://www.giniko.com/images/favicon.ico",
     "apiVersion": 1,
-    "fileHash": "sha256-f9a9638839fba4e8fc3372c425ff2d69c4abfbcfa9ca0a5aad15062030c385cd"
+    "fileHash": "sha256-fe5293019f68f9ac2c2896d6eb0d5fec8e8e812cd47defe02b7dc05ea6023608"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/HDFilmCehennemi.cs3",
@@ -747,7 +747,7 @@
       "kraptor"
     ],
     "description": "HDFilmCehennemi - Türkiye'nin en hızlı hd film izleme sitesi. Tek ve gerçek HDFilmCehennemi sitesi.",
-    "fileSize": 77594,
+    "fileSize": 77593,
     "repositoryUrl": "https://github.com/aytzey/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -756,7 +756,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?sz=128&domain=http://hdfilmcehennemi.nl",
     "apiVersion": 1,
-    "fileHash": "sha256-9822defc1600001235e4a50dd107bccdc1482f5d74f03d474bb39a7fbd9702e8"
+    "fileHash": "sha256-492bf8eba011c88ba7f3ac57405f3cb84bb9ca5ffd687216e5c837b1650f3d4c"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/HDFilmDelisi.cs3",
@@ -776,7 +776,7 @@
     ],
     "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hdfilmdelisi.one/&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-c09d030012a13a0b77fffc5a0e2cf70f105ae0a517999f129f1888b399d95d42"
+    "fileHash": "sha256-531a7c1965761f3e37af0070bdcb464da1607537dfb2182b879070b4b00c3661"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/HDFilmizle.cs3",
@@ -796,7 +796,7 @@
     ],
     "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.hdfilmizle.life/rally-caps/&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-58256f572dffe1859ceeac6ca3b75333685e5065f8b40a8934f3ac1a2ee7adde"
+    "fileHash": "sha256-a178d4f6c910114a2e3a1e608a08e3257ab2257ba9dcfe565045a0dccd88c668"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/InatBox.cs3",
@@ -839,7 +839,7 @@
     ],
     "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://jetfilmizle.de&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-0f064969d50a71949c4e1696e5d4b1f9989f5e1b1012f32801e983260ed538d1"
+    "fileHash": "sha256-c1685d599eab24faf67ec7ee019701eacf6c1e7db21039e87b892d14d9f4585e"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/KickTR.cs3",
@@ -860,7 +860,7 @@
     ],
     "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://kick.com&size=48",
     "apiVersion": 1,
-    "fileHash": "sha256-bdc1381d3ebdc2a6e0d3c30bf02d0e2a8cc407c6a990b21e6b479ac7769bcefc"
+    "fileHash": "sha256-ff59c5c765d033cffa6ad2f797f6b8ab3572f9ade64cc71b0e43acf901e351e4"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/KraptorPlus.cs3",
@@ -875,7 +875,7 @@
       "Megix"
     ],
     "description": "Bir çok sitenin birleştiği toplama eklenti.",
-    "fileSize": 623226,
+    "fileSize": 623909,
     "repositoryUrl": "https://github.com/aytzey/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -888,7 +888,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/aytzey/cs-kraptor/refs/heads/master/.github/icons/logo/kraptorplus.png",
     "apiVersion": 1,
-    "fileHash": "sha256-f22996924d87f03ebd33507352525d16a2d50d97f34395b1eab182eb774cfde9"
+    "fileHash": "sha256-43496b06236f84683fec97aa01ed116354545f7c69963e42859b4f7cb70750b9"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/KultFilmler.cs3",
@@ -909,7 +909,7 @@
     ],
     "iconUrl": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://kultfilmler.net&size=32",
     "apiVersion": 1,
-    "fileHash": "sha256-5ea4569af1aecb3e7341db195436c90f54a7e0016d8eb495f77d7eadbfa06386"
+    "fileHash": "sha256-78248f5d50147e2b68150c7e1cbf07782979b49da8a77e508bf84aa0338d6060"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/MirrorVerse.cs3",
@@ -923,7 +923,7 @@
       "ByAyzen"
     ],
     "description": "Netflix, Disney+ ve Primevideo eklentileri tek bir eklentide kendisi bir eklenti degildir bu 3 eklentiyi kurar, tüm eklentilerde altyazı netflixde dublaj desteği var.",
-    "fileSize": 140096,
+    "fileSize": 140095,
     "repositoryUrl": "https://github.com/aytzey/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -932,7 +932,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/aytzey/cs-kraptor/refs/heads/master/.github/icons/logo/mirrorverseicon.png",
     "apiVersion": 1,
-    "fileHash": "sha256-324d85b6700ccace0a2b8fdb83474a2c65f6b966041a64de97bce3ef7e49ac8f"
+    "fileHash": "sha256-1b13f2322d4ce9a413cbb6ae5473a44c962c903565d4d569580ff39567ec6dab"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/OnePaceTr.cs3",
@@ -952,7 +952,7 @@
     ],
     "iconUrl": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.onepacetr.net/&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-0dca32ab01dfd3ae3e8953f22a011f66b03c59c8f51056089c2322ea326f2e40"
+    "fileHash": "sha256-e0393ea5e8048a0afdb9e3fd8863441416116200352689f58166c18e5b20790d"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/OpenAnime.cs3",
@@ -965,7 +965,7 @@
       "ByAyzen"
     ],
     "description": "Anime izleme deneyiminizi zenginleştiren, hızlı ve etkileyici özelliklerle donatılmış, şık bir tasarıma sahip anime platformu. Anime izleme deneyiminiz, kolaylaştırıldı.",
-    "fileSize": 75102,
+    "fileSize": 75101,
     "repositoryUrl": "https://github.com/aytzey/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -974,7 +974,7 @@
     ],
     "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://openani.me/&size=24",
     "apiVersion": 1,
-    "fileHash": "sha256-49b12b02e85124446e06659e887dd23ceb03840c12439f7c62e85100f19d2c88"
+    "fileHash": "sha256-168235fd66f997157184e279246ca39d73a5bc26990746e13cb8f2d6af3c10a4"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/RareFilmm.cs3",
@@ -994,7 +994,7 @@
     ],
     "iconUrl": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://rarefilmm.com&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-c57eab183d3aa98cd0fdca95a72a90c9500c081bd311a470de9986bb6429d584"
+    "fileHash": "sha256-527fdb15099c859ac0b58530d40fac0e07c380d88f3fab139aeaffdfea615a00"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/RecTV.cs3",
@@ -1038,7 +1038,7 @@
     ],
     "iconUrl": "https://seicode.net/favicon.png",
     "apiVersion": 1,
-    "fileHash": "sha256-b7bbed57b214623a8b1061babb7201aec2d0d9cb35ef4ca6cc1f4663f61793d7"
+    "fileHash": "sha256-f1ebdac5ecf627f57bcf2ff07b331ea04d131f24e5f5dcde070b26c4a8420ad3"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/SelcukFlix.cs3",
@@ -1050,7 +1050,7 @@
       "kerimmkirac"
     ],
     "description": "Selcukflix'te her türden en yeni ve en popüler dizi ve filmleri izlemenin keyfini çıkarın. Aksiyondan romantiğe, bilim kurgudan dramaya, geniş kütüphanemizde herkes için bir şey var.",
-    "fileSize": 66977,
+    "fileSize": 66978,
     "repositoryUrl": "https://github.com/aytzey/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -1059,7 +1059,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=selcukflix.com",
     "apiVersion": 1,
-    "fileHash": "sha256-7b915efd51e1be81d79016d5ec641f0e07eb4d97c4daf0afecdcf8fb2881e464"
+    "fileHash": "sha256-4f20909d812b62f99461d4d2a136365a205aa9bddc14f6f45b9208b6eefc6bbc"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/SetFilmIzle.cs3",
@@ -1073,7 +1073,7 @@
       "ByAyzen"
     ],
     "description": "Setfilmizle sitemizde, donma yaşamadan Türkçe dublaj ve altyazılı filmleri ile dizileri muhteşem 1080p full HD kalitesinde izleyebilirsiniz.",
-    "fileSize": 69972,
+    "fileSize": 69971,
     "repositoryUrl": "https://github.com/aytzey/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -1081,7 +1081,7 @@
     ],
     "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.setfilmizle.uk/&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-5754cfdbea599f36075fedfda8d7b1d7093d6c26cd8c1d559849324390eb7083"
+    "fileHash": "sha256-fd92326fbb793368516b1d55a669337f85c8a77a98183544957bc25146b93a8d"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/SezonlukDizi.cs3",
@@ -1102,7 +1102,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=sezonlukdizi6.com",
     "apiVersion": 1,
-    "fileHash": "sha256-bf848e42a4f45e9214e549ca8c51b46da59c5fff86cac4de1de499b90566bdcc"
+    "fileHash": "sha256-820fe6cfa744d1d8006901d125fb5ecd611a95be2e37ff3c5a8f0615ea48ff11"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/SinemaCX.cs3",
@@ -1122,7 +1122,7 @@
     ],
     "iconUrl": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.sinema.gg/&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-5325a4cfd295d490d25f8b9a91f887984e194ccfa8c6ed2f711d3107838d26a6"
+    "fileHash": "sha256-d06e11489628bff498b6d6c8f09914b099fc23c75842fe3985dc4f7b640746cc"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/SineWix.cs3",
@@ -1167,7 +1167,7 @@
     ],
     "iconUrl": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://sinezy.fit&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-21968c95b0d86755e8dc25f64b9aaa13d91335e779ef843df200c20f5a0e6b46"
+    "fileHash": "sha256-b31a8f38b65f8558e98030088f25ad2db8dbe28c2d7bafe3c0bc22dc95e3de96"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/TrAnimeIzle.cs3",
@@ -1187,7 +1187,7 @@
     ],
     "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.tranimeizle.io/&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-cf8354313bb9cd098381957bd8914f20b6b09e95696c51c2fc5988f9aa783e06"
+    "fileHash": "sha256-f61f5ebb9c7f83b12f4af230a2aef34fffb15bd6240f6f86a9721af3e3641abe"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/TurkAnime.cs3",
@@ -1209,7 +1209,7 @@
     ],
     "iconUrl": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.turkanime.co&size=64",
     "apiVersion": 1,
-    "fileHash": "sha256-08dd8b43b05bb2db773d40f03b5da7345f41bfdb03ad3082633b852142f2d0eb"
+    "fileHash": "sha256-64e1cc192e3c0287bfe0cd7a2a73b17f0c6778bbdd82b856b7a5561f579320d7"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/Turkdizileri.cs3",
@@ -1229,7 +1229,7 @@
     ],
     "iconUrl": "https://i.imgur.com/Cff8v6J.png",
     "apiVersion": 1,
-    "fileHash": "sha256-aa2bc67792c6dff919685840e99a0c33aff8558b3a45b55adf23f83b14196d3e"
+    "fileHash": "sha256-b29876955e08a76d88f3421972ee8d1af5f1b581963439ed09ea3cf4906feb2b"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/TvDiziler.cs3",
@@ -1249,7 +1249,7 @@
     ],
     "iconUrl": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://tvdiziler.cc&size=16",
     "apiVersion": 1,
-    "fileHash": "sha256-193d0f1be14a6d643c0138b060675abf750f8d01685bbe29a6c67c3707962e20"
+    "fileHash": "sha256-cc18366ae75f44e189335cbdd76b50acff733f2071ebe57735113c1586b1ddc0"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/WebDramaTurkey.cs3",
@@ -1271,7 +1271,7 @@
     ],
     "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://webdramaturkey.org/&size=40",
     "apiVersion": 1,
-    "fileHash": "sha256-96141e92bcd0a3ff547008a78c20fbbfc65e2ecd6ed70ef28117857dd39edeaa"
+    "fileHash": "sha256-5c70e374f9b89667bae9e18b506adb3ec66eda5e31667cd806998c269be5daee"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/WebteIzle.cs3",
@@ -1292,7 +1292,7 @@
     ],
     "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://webteizle1.xyz&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-cb98f3cb1e03dabe8a56155126473f6643002a76ff12b448f19e81d8d6a42d72"
+    "fileHash": "sha256-4f4d9c651cb331de12ce1ce8d1498ef2b63d66a58dcaa9367e835e2eed68fd3c"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/WFilmizle.cs3",
@@ -1312,7 +1312,7 @@
     ],
     "iconUrl": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://wfilmizle.bar&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-0a761f5f56eb51ce9409c37ba3bca259313ce294e2877c80ebf2ceb2493f2a2c"
+    "fileHash": "sha256-1530e63b93bee463a0e088f39d9d307b6fb9aa618a206a94f569e431556cbe73"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/YabanciDizi.cs3",
@@ -1332,7 +1332,7 @@
     ],
     "iconUrl": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://yabancidizi.so/&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-8bb86acad66420052644a82108423b6288564c173b1ba2f241aad4e38d48f4ec"
+    "fileHash": "sha256-cb76b481100d2a75e8331568d05dfeae7d399a31a8166f1179200e3ae506a7a3"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/YeniKaynak.cs3",
@@ -1354,7 +1354,7 @@
     ],
     "iconUrl": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.yenikaynak.com/&size=16",
     "apiVersion": 1,
-    "fileHash": "sha256-e2152b01845f804f489541e2bd9014053a7a8e2d8f17423d35112de98c20a868"
+    "fileHash": "sha256-8c8315459e9c8731e850d34e09eb2487cada4206acda8a30d2eb0435b8261f7b"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/YesilCamTv.cs3",
@@ -1366,7 +1366,7 @@
       "kraptor"
     ],
     "description": "Türk sinemasının unutulmaz filmler bu adreste.",
-    "fileSize": 22333,
+    "fileSize": 22334,
     "repositoryUrl": "https://github.com/aytzey/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -1374,7 +1374,7 @@
     ],
     "iconUrl": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://yesilcamtv.com.tr&size=64",
     "apiVersion": 1,
-    "fileHash": "sha256-df14a29f1541d5b9d1ccad58ceec65f3168e85cf5b27c6ad8225ae92234a6ec8"
+    "fileHash": "sha256-5fbfa3f16215e84c190553ece62c24b440b90e7314930ade619cca02c1a70104"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/Youtube.cs3",
@@ -1421,6 +1421,6 @@
     ],
     "iconUrl": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://en.yts-official.mx&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-0069f5a4db566f9e6bfe022ce6cdeae6437076fa759389c10ccb8d4b3b631dad"
+    "fileHash": "sha256-cd2a00d8f49abfd5e42e7d8e2de8bf2cc48eccb58a6428fa94d4fd51e244ecf9"
   }
 ]
