@@ -22,7 +22,7 @@
 |DiziPalOrijinal:https://dizipal1583.com
 |DiziPod:https://dizipod.com
 |Dizilla:https://dizilla.now
-|DiziYo:https://www.diziyo.so
+|DiziYo:https://www.diziyo.so:443
 |DiziYou:https://www.diziyou.one
 |DMax:https://www.dmax.com.tr
 |FilmEkseni:https://filmekseni.vip
