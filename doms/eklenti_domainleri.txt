@@ -8,7 +8,7 @@
 |Atv:https://www.atv.com.tr
 |BelgeselX:https://belgeselx.com
 |Cizgimax:https://cizgimax.online
-|CizgiveDizi:https://cizgivedizi.com
+|CizgiveDizi:https://cizgivedizi.net
 |Ddizi:https://www.ddizi.im
 |DizifilmORG:https://dizifilmizle.to
 |DiziAsia:https://diziasia.com
