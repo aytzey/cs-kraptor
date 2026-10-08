@@ -50,7 +50,7 @@
 |SetFilmIzle:https://www.setfilmizle.ltd
 |ShowTv:https://www.showtv.com.tr
 |SinemaCX:https://sinemacc.com
-|Sinezy:https://sinezy.to
+|Sinezy:https://sinezy.si
 |StarTv:https://www.startv.com.tr
 |Teve2:https://www.tv2.com.tr
 |TLC:https://www.tlctv.com.tr
