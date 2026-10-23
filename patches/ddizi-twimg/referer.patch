@@ -1,0 +1,63 @@
+--- a/com/kraptor/Ddizi$extractDdiziPlayer$link$1.smali
++++ b/com/kraptor/Ddizi$extractDdiziPlayer$link$1.smali
+@@ -201,7 +201,7 @@
+     .line 328
+     iget-object v1, p0, Lcom/kraptor/Ddizi$extractDdiziPlayer$link$1;->$url:Ljava/lang/String;
+ 
+-    invoke-virtual {v0, v1}, Lcom/lagradost/cloudstream3/utils/ExtractorLink;->setReferer(Ljava/lang/String;)V
++    invoke-static {v0, v1}, Lcom/kraptor/Ddizi;->setPlayerReferer(Lcom/lagradost/cloudstream3/utils/ExtractorLink;Ljava/lang/String;)V
+ 
+     .line 329
+     iget v1, p0, Lcom/kraptor/Ddizi$extractDdiziPlayer$link$1;->$quality:I
+--- a/com/kraptor/Ddizi$extractDdiziPlayer$link$2.smali
++++ b/com/kraptor/Ddizi$extractDdiziPlayer$link$2.smali
+@@ -223,7 +223,7 @@
+     .line 348
+     iget-object v1, p0, Lcom/kraptor/Ddizi$extractDdiziPlayer$link$2;->$url:Ljava/lang/String;
+ 
+-    invoke-virtual {v0, v1}, Lcom/lagradost/cloudstream3/utils/ExtractorLink;->setReferer(Ljava/lang/String;)V
++    invoke-static {v0, v1}, Lcom/kraptor/Ddizi;->setPlayerReferer(Lcom/lagradost/cloudstream3/utils/ExtractorLink;Ljava/lang/String;)V
+ 
+     .line 349
+     sget-object v1, Lcom/lagradost/cloudstream3/utils/Qualities;->Unknown:Lcom/lagradost/cloudstream3/utils/Qualities;
+--- a/com/kraptor/Ddizi$extractDdiziPlayer$link$3.smali
++++ b/com/kraptor/Ddizi$extractDdiziPlayer$link$3.smali
+@@ -213,7 +213,7 @@
+     iget-object v1, p0, Lcom/kraptor/Ddizi$extractDdiziPlayer$link$3;->$url:Ljava/lang/String;
+ 
+     :goto_22
+-    invoke-virtual {v0, v1}, Lcom/lagradost/cloudstream3/utils/ExtractorLink;->setReferer(Ljava/lang/String;)V
++    invoke-static {v0, v1}, Lcom/kraptor/Ddizi;->setPlayerReferer(Lcom/lagradost/cloudstream3/utils/ExtractorLink;Ljava/lang/String;)V
+ 
+     .line 405
+     sget-object v1, Lcom/lagradost/cloudstream3/utils/Qualities;->Unknown:Lcom/lagradost/cloudstream3/utils/Qualities;
+--- a/com/kraptor/Ddizi.smali
++++ b/com/kraptor/Ddizi.smali
+@@ -404,6 +404,27 @@
+     return-object v0
+ .end method
+ 
++.method public static setPlayerReferer(Lcom/lagradost/cloudstream3/utils/ExtractorLink;Ljava/lang/String;)V
++    .locals 2
++
++    # Twitter video CDN rejects the Ddizi Referer, including on HLS child requests.
++    invoke-virtual {p0}, Lcom/lagradost/cloudstream3/utils/ExtractorLink;->getUrl()Ljava/lang/String;
++    move-result-object v0
++    invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
++    move-result-object v0
++    invoke-virtual {v0}, Landroid/net/Uri;->getHost()Ljava/lang/String;
++    move-result-object v0
++    const-string v1, "video.twimg.com"
++    invoke-virtual {v1, v0}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
++    move-result v0
++    if-eqz v0, :keep_player_referer
++    const-string p1, ""
++
++    :keep_player_referer
++    invoke-virtual {p0, p1}, Lcom/lagradost/cloudstream3/utils/ExtractorLink;->setReferer(Ljava/lang/String;)V
++    return-void
++.end method
++
+ .method public static final synthetic access$initSession(Lcom/kraptor/Ddizi;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+     .registers 3
+     .param p0, "$this"    # Lcom/kraptor/Ddizi;
