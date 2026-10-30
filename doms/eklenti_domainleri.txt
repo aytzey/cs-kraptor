@@ -54,7 +54,7 @@
 |StarTv:https://www.startv.com.tr
 |Teve2:https://www.tv2.com.tr
 |TLC:https://www.tlctv.com.tr
-|TrAnimeIzle:https://www.tranimeizle.io
+|TrAnimeIzle:https://www.tranimeizle.live
 |TrDiziIzle:https://www.trdiziizle.tv
 |Trt1:https://www.trt1.com.tr
 |TrtCocuk:https://www.trtcocuk.net.tr
