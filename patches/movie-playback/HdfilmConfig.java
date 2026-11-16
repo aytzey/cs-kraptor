@@ -30,9 +30,10 @@ public final class HdfilmConfig {
         + "if(n<0)throw Error('base64');v=(v<<6)|n;b+=6;if(b>=8){b-=8;o+=String.fromCharCode((v>>b)&255);}}return o;}";
 
     private static final class BoundedContext extends ContextFactory {
-        private final long deadline = System.nanoTime() + 2_000_000_000L;
+        private long deadline;
+        void start() { deadline = System.nanoTime() + 5_000_000_000L; }
         @Override protected void observeInstructionCount(Context context, int count) {
-            if (System.nanoTime() > deadline) throw new IllegalStateException("player decode timeout");
+            if (deadline != 0 && System.nanoTime() > deadline) throw new IllegalStateException("player decode timeout");
         }
     }
 
@@ -42,7 +43,8 @@ public final class HdfilmConfig {
         int end = html.indexOf("var configs", start < 0 ? 0 : start);
         Matcher source = SOURCE.matcher(html);
         if (start < 0 || end < start || !source.find()) return null;
-        Context context = new BoundedContext().enterContext();
+        BoundedContext factory = new BoundedContext();
+        Context context = factory.enterContext();
         try {
             context.setOptimizationLevel(-1);
             context.setInstructionObserverThreshold(10000);
@@ -63,6 +65,7 @@ public final class HdfilmConfig {
                 parts = new JSONArray(argument);
             }
             String code = BASE64 + html.substring(start, end) + "\n" + source.group(1) + "(" + parts + ");";
+            factory.start();
             String url = String.valueOf(context.evaluateString(scope, code, "hdfilm-player", 1, null));
             URI uri = URI.create(url);
             if (!"https".equals(uri.getScheme()) || uri.getHost() == null || uri.getUserInfo() != null) return null;
