@@ -77,12 +77,22 @@ public class MovieProbe {
                 if (!Boolean.TRUE.equals(helper.getMethod("isAllowedVersion").invoke(instance))) throw new IllegalStateException("package rejected");
             } catch (ClassNotFoundException|NoSuchMethodException ignored) {}
             Object provider;
-            try { provider=type.getConstructor(android.content.SharedPreferences.class).newInstance(ctx.getSharedPreferences("DomainListesi",0)); }
+            // Isolated cached-domain fixture: constructors build category URLs before setMainUrl runs.
+            android.content.SharedPreferences domains=(android.content.SharedPreferences)java.lang.reflect.Proxy.newProxyInstance(
+                android.content.SharedPreferences.class.getClassLoader(),new Class<?>[]{android.content.SharedPreferences.class},(p,m,a)->{
+                    if(m.getName().equals("getString"))return args[1].equals("-")?a[1]:args[1];
+                    if(m.getName().equals("getLong"))return System.currentTimeMillis();
+                    if(m.getName().equals("contains"))return true;
+                    if(m.getName().equals("getAll"))return Collections.emptyMap();
+                    if(m.getName().equals("edit"))throw new UnsupportedOperationException("probe preferences are read-only");
+                    return a!=null && a.length==2?a[1]:null;
+                });
+            try { provider=type.getConstructor(android.content.SharedPreferences.class).newInstance(domains); }
             catch (NoSuchMethodException ignored) {
                 try { provider=type.getConstructor().newInstance(); }
                 catch(NoSuchMethodException ignoredAgain) { provider=type.getConstructor(android.content.Context.class).newInstance(ctx); }
             }
-            if(!args[2].equals("extract"))type.getMethod("setMainUrl",String.class).invoke(provider,args[1]);
+            if(!args[2].equals("extract") && !args[1].equals("-"))type.getMethod("setMainUrl",String.class).invoke(provider,args[1]);
             try { Class.forName("com.kraptor.MovieBackup").getMethod("setup",android.content.Context.class).invoke(null,ctx); }
             catch (ClassNotFoundException ignored) {}
             System.out.println("PROBE provider="+args[0]+" main="+get(provider,"getMainUrl"));
@@ -103,13 +113,20 @@ public class MovieProbe {
             System.out.println("PROBE extractors="+registered);
             if (args[2].equals("home")) {
                 List<?> pages=(List<?>)get(provider,"getMainPage");
-                Object page=pages.get(0);
+                Object page=pages.get(args[3].matches("[0-9]+") ? Integer.parseInt(args[3]) : 0);
+                System.out.println("PROBE page="+get(page,"getName")+" url="+get(page,"getData"));
                 Class<?> request=Class.forName("com.lagradost.cloudstream3.MainPageRequest");
                 Object first=request.getConstructor(String.class,String.class,boolean.class)
                     .newInstance(get(page,"getName"),get(page,"getData"),false);
-                Object response=call(provider,"getMainPage",1,first);
+                long started=System.currentTimeMillis();
+                Object response=call(provider,"getMainPage",args.length>5?Integer.parseInt(args[5]):1,first);
+                System.out.println("PROBE home-ms="+(System.currentTimeMillis()-started));
+                System.out.println("PROBE next-page="+get(response,"getHasNext"));
                 int results=0;
-                for(Object section:(List<?>)get(response,"getItems"))results+=((List<?>)get(section,"getList")).size();
+                for(Object section:(List<?>)get(response,"getItems")) {
+                    List<?> items=(List<?>)get(section,"getList"); results+=items.size();
+                    for(int i=0;i<Math.min(2,items.size());i++)System.out.println("PROBE home-item="+get(items.get(i),"getName")+" url="+get(items.get(i),"getUrl"));
+                }
                 System.out.println("PROBE home-results="+results);
                 if(results==0)throw new AssertionError("empty home");
             } else if (args[2].equals("search")) {
@@ -120,7 +137,7 @@ public class MovieProbe {
                 if (response instanceof List) results=(List<?>)response;
                 else results=(List<?>)get(response,"getItems");
                 System.out.println("PROBE results="+results.size());
-                for (int i=0;i<Math.min(3,results.size());i++) System.out.println("PROBE result="+get(results.get(i),"getName")+" url="+get(results.get(i),"getUrl"));
+                for (int i=0;i<Math.min(12,results.size());i++) System.out.println("PROBE result="+get(results.get(i),"getName")+" url="+get(results.get(i),"getUrl"));
                 if (results.isEmpty()) throw new AssertionError("empty search");
             } else {
                 String data=args[3];
@@ -132,9 +149,18 @@ public class MovieProbe {
                     Map<?,?> sync=(Map<?,?>)get(detail,"getSyncData");
                     if(sync!=null && sync.get("imdb")!=null)System.out.println("PROBE imdb="+sync.get("imdb"));
                     try { data=(String)get(detail,"getDataUrl"); }
-                    catch(NoSuchMethodException ignored) { System.out.println("PROBE detail="+detail.getClass().getSimpleName()); }
+                    catch(NoSuchMethodException ignored) {
+                        Object episodes=get(detail,"getEpisodes");
+                        List<?> first=null; int count=0;
+                        Collection<?> groups=episodes instanceof Map ? ((Map<?,?>)episodes).values() : Collections.singleton(episodes);
+                        for(Object value:groups) {List<?> list=(List<?>)value;count+=list.size();if(first==null&&!list.isEmpty())first=list;}
+                        if(first==null)throw new AssertionError("no episodes");
+                        System.out.println("PROBE episodes="+count+" selected="+get(first.get(0),"getName"));
+                        data=(String)get(first.get(0),"getData");
+                    }
                 }
                 if (!args[2].equals("load")) {
+                    System.out.println("PROBE data-kind="+(data.startsWith("http")?"web":"other")+" fragment="+(data.startsWith("http") && URI.create(data).getFragment()!=null));
                     Class<?> fn=Class.forName("kotlin.jvm.functions.Function1");
                     int[] links={0}, usable={0};
                     Object sub=java.lang.reflect.Proxy.newProxyInstance(fn.getClassLoader(),new Class<?>[]{fn},(p,m,a)->unit);
@@ -145,8 +171,12 @@ public class MovieProbe {
                             System.out.println("PROBE link="+get(item,"getName")+" host="+URI.create(url).getHost()+" type="+get(item,"getType"));
                             Map<String,String> headers=new HashMap<>((Map<String,String>)get(item,"getHeaders"));
                             String ref=(String)get(item,"getReferer"); if(ref!=null&&!ref.isEmpty())headers.put("Referer",ref);
-                            try {media(url,headers,0);usable[0]++;}
-                            catch(Exception|AssertionError failure){System.out.println("PROBE media-failure="+failure.getClass().getSimpleName());}
+                            System.out.println("PROBE headers="+headers.keySet()+" ref-host="+(ref==null||ref.isEmpty()?"none":URI.create(ref).getHost()));
+                            try {
+                                media(url,headers,0);usable[0]++;
+                                if(args[2].equals("first")) {System.out.println("PROBE first-source-usable=true");System.exit(0);}
+                            }
+                            catch(Exception|AssertionError failure){String msg=failure.getMessage();System.out.println("PROBE media-failure="+failure.getClass().getSimpleName()+(msg!=null&&msg.matches("HTTP [0-9]+")?" "+msg:""));}
                         }
                         return unit;
                     });
