@@ -83,6 +83,8 @@ public class MovieProbe {
                 catch(NoSuchMethodException ignoredAgain) { provider=type.getConstructor(android.content.Context.class).newInstance(ctx); }
             }
             if(!args[2].equals("extract"))type.getMethod("setMainUrl",String.class).invoke(provider,args[1]);
+            try { Class.forName("com.kraptor.MovieBackup").getMethod("setup",android.content.Context.class).invoke(null,ctx); }
+            catch (ClassNotFoundException ignored) {}
             System.out.println("PROBE provider="+args[0]+" main="+get(provider,"getMainUrl"));
             Class<?> extractor=Class.forName("com.lagradost.cloudstream3.utils.ExtractorApi");
             List<Object> extractors=(List<Object>)Class.forName("com.lagradost.cloudstream3.utils.ExtractorApiKt").getMethod("getExtractorApis").invoke(null);
@@ -99,7 +101,18 @@ public class MovieProbe {
                 extractors.add(0,e); registered++;
             }
             System.out.println("PROBE extractors="+registered);
-            if (args[2].equals("search")) {
+            if (args[2].equals("home")) {
+                List<?> pages=(List<?>)get(provider,"getMainPage");
+                Object page=pages.get(0);
+                Class<?> request=Class.forName("com.lagradost.cloudstream3.MainPageRequest");
+                Object first=request.getConstructor(String.class,String.class,boolean.class)
+                    .newInstance(get(page,"getName"),get(page,"getData"),false);
+                Object response=call(provider,"getMainPage",1,first);
+                int results=0;
+                for(Object section:(List<?>)get(response,"getItems"))results+=((List<?>)get(section,"getList")).size();
+                System.out.println("PROBE home-results="+results);
+                if(results==0)throw new AssertionError("empty home");
+            } else if (args[2].equals("search")) {
                 Object response;
                 try { response=call(provider,"search",args[3],1); }
                 catch (NoSuchMethodException ignored) { response=call(provider,"search",args[3]); }
@@ -115,6 +128,9 @@ public class MovieProbe {
                     Object detail=call(provider,"load",data);
                     if(detail==null) throw new AssertionError("null detail");
                     System.out.println("PROBE title="+get(detail,"getName"));
+                    if(!get(provider,"getName").equals(get(detail,"getApiName")))throw new AssertionError("provider identity changed");
+                    Map<?,?> sync=(Map<?,?>)get(detail,"getSyncData");
+                    if(sync!=null && sync.get("imdb")!=null)System.out.println("PROBE imdb="+sync.get("imdb"));
                     try { data=(String)get(detail,"getDataUrl"); }
                     catch(NoSuchMethodException ignored) { System.out.println("PROBE detail="+detail.getClass().getSimpleName()); }
                 }
