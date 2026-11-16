@@ -636,7 +636,7 @@
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/FilmMakinesi.cs3",
     "status": 1,
-    "version": 71,
+    "version": 72,
     "name": "FilmMakinesi",
     "internalName": "FilmMakinesi",
     "authors": [
@@ -644,8 +644,8 @@
       "usdogu",
       "nikyokki"
     ],
-    "description": "Film Makinesi, en yeni ve en güncel filmleri sitemizde full HD kalite farkı ile izleyebilirsiniz. HD film izle denildiğinde akla gelen en kaliteli film izleme sitesi.",
-    "fileSize": 82353,
+    "description": "Film Makinesi, en yeni ve en güncel filmleri sitemizde full HD kalite farkı ile izleyebilirsiniz. HD film izle denildiğinde akla gelen en kaliteli film izleme sitesi. Kaynak açılamazsa eşleşen film için HDFilmCehennemi yedeğini kullanır.",
+    "fileSize": 92211,
     "repositoryUrl": "https://github.com/aytzey/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -654,19 +654,19 @@
     ],
     "iconUrl": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://filmmakinesi.tv&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-7786d602f9d73cde99e0aeecf37bfd8efac01e17b89e5b2e70082c9d54fa2ae4"
+    "fileHash": "sha256-295beb642f9245c5631074f5670982eb906c16f6d944576e42cc04d185588787"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/FilmModu.cs3",
     "status": 1,
-    "version": 42,
+    "version": 43,
     "name": "FilmModu",
     "internalName": "FilmModu",
     "authors": [
       "kraptor"
     ],
-    "description": "Film modun geldiyse yüksek kalitede en yeni filmleri izle, 1080p izleyebileceğiniz reklamsiz film sitesi.",
-    "fileSize": 29725,
+    "description": "Film modun geldiyse yüksek kalitede en yeni filmleri izle, 1080p izleyebileceğiniz reklamsiz film sitesi. Kaynak açılamazsa eşleşen film için HDFilmCehennemi yedeğini kullanır.",
+    "fileSize": 40511,
     "repositoryUrl": "https://github.com/aytzey/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -674,7 +674,7 @@
     ],
     "iconUrl": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.filmmodu.one/&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-f6581f7272b6714280bf665b3a413066a11e3cf142b30309c77045d257d1ec1c"
+    "fileHash": "sha256-dd5d5d148f5c4a9cd03705fa8770fbf945f40d60cab74fa007b553f29204cbe1"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/Filmzal.cs3",
@@ -781,14 +781,14 @@
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/HDFilmizle.cs3",
     "status": 1,
-    "version": 26,
+    "version": 27,
     "name": "HDFilmizle",
     "internalName": "HDFilmizle",
     "authors": [
       "ByAyzen"
     ],
-    "description": "En yeni ve popüler filmleri 1080p kalitesinde Türkçe dublaj altyazılı izle. Aksiyon, macera, komedi, dram ve daha fazlası film izle sayfamızda.",
-    "fileSize": 61447,
+    "description": "En yeni ve popüler filmleri 1080p kalitesinde Türkçe dublaj altyazılı izle. Aksiyon, macera, komedi, dram ve daha fazlası film izle sayfamızda. Kaynak açılamazsa eşleşen film için HDFilmCehennemi yedeğini kullanır.",
+    "fileSize": 72039,
     "repositoryUrl": "https://github.com/aytzey/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -796,7 +796,7 @@
     ],
     "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.hdfilmizle.life/rally-caps/&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-a178d4f6c910114a2e3a1e608a08e3257ab2257ba9dcfe565045a0dccd88c668"
+    "fileHash": "sha256-34c3e2d234330f717af38df79073b149b24a4eaeefef134e92b1a27fdd570975"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/InatBox.cs3",
@@ -1297,14 +1297,14 @@
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/WFilmizle.cs3",
     "status": 1,
-    "version": 24,
+    "version": 25,
     "name": "WFilmizle",
     "internalName": "WFilmizle",
     "authors": [
       "ByAyzen"
     ],
-    "description": "Yerli ve yabancı film izle, Türkçe dublaj ve altyazı seçenekleriyle en yeni ve unutulmamış olan filmleri Full HD kalitesinde online izleyebilirsiniz.",
-    "fileSize": 59842,
+    "description": "Yerli ve yabancı film izle, Türkçe dublaj ve altyazı seçenekleriyle en yeni ve unutulmamış olan filmleri Full HD kalitesinde online izleyebilirsiniz. Kaynak açılamazsa eşleşen film için HDFilmCehennemi yedeğini kullanır.",
+    "fileSize": 70432,
     "repositoryUrl": "https://github.com/aytzey/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -1312,7 +1312,7 @@
     ],
     "iconUrl": "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://wfilmizle.bar&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-1530e63b93bee463a0e088f39d9d307b6fb9aa618a206a94f569e431556cbe73"
+    "fileHash": "sha256-9d9619992b756fcc7f8bac50a11deb06f400bdb68335ee2e26db158471aa21f0"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/YabanciDizi.cs3",
@@ -1422,5 +1422,24 @@
     "iconUrl": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://en.yts-official.mx&size=128",
     "apiVersion": 1,
     "fileHash": "sha256-cd2a00d8f49abfd5e42e7d8e2de8bf2cc48eccb58a6428fa94d4fd51e244ecf9"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/UgurFilm.cs3",
+    "status": 1,
+    "version": 37,
+    "name": "UgurFilm",
+    "internalName": "UgurFilm",
+    "authors": [
+      "kraptor"
+    ],
+    "description": "UğurFilm arşivi. Kaynak açılamazsa eşleşen film için HDFilmCehennemi yedeğini kullanır.",
+    "repositoryUrl": "https://github.com/aytzey/cs-kraptor",
+    "language": "tr",
+    "tvTypes": [
+      "Movie"
+    ],
+    "apiVersion": 1,
+    "fileSize": 46769,
+    "fileHash": "sha256-16eadbb09b57311f6d8ef1b26d69a424d501ed276a570176795178a6f83288bb"
   }
 ]
