@@ -699,7 +699,7 @@
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/FullHDFilmizlesene.cs3",
     "status": 1,
-    "version": 73,
+    "version": 74,
     "name": "FullHDFilmizlesene",
     "internalName": "FullHDFilmizlesene",
     "authors": [
@@ -707,7 +707,7 @@
       "ByAyzen"
     ],
     "description": "Sinema zevkini evinize kadar getirdik. Türkiye'nin lider Film sitesinde, en yeni filmleri Full HD izleyin.",
-    "fileSize": 145784,
+    "fileSize": 144765,
     "repositoryUrl": "https://github.com/aytzey/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -715,7 +715,7 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?sz=64&domain=www.fullhdfilmizlesene.de",
     "apiVersion": 1,
-    "fileHash": "sha256-9a99c6aa6f2ef5f644116200a19956dc2c1212d77560d8338e222b89badcf472"
+    "fileHash": "sha256-a5e16f294f5d7fcc093e918560fe8b9dbbf42f8df84cb46de105ac9849c15d36"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/GinikoCanli.cs3",
@@ -740,14 +740,14 @@
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/HDFilmCehennemi.cs3",
     "status": 1,
-    "version": 98,
+    "version": 99,
     "name": "HDFilmCehennemi",
     "internalName": "HDFilmCehennemi",
     "authors": [
       "kraptor"
     ],
     "description": "HDFilmCehennemi - Türkiye'nin en hızlı hd film izleme sitesi. Tek ve gerçek HDFilmCehennemi sitesi.",
-    "fileSize": 77593,
+    "fileSize": 79231,
     "repositoryUrl": "https://github.com/aytzey/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -756,19 +756,19 @@
     ],
     "iconUrl": "https://www.google.com/s2/favicons?sz=128&domain=http://hdfilmcehennemi.nl",
     "apiVersion": 1,
-    "fileHash": "sha256-492bf8eba011c88ba7f3ac57405f3cb84bb9ca5ffd687216e5c837b1650f3d4c"
+    "fileHash": "sha256-57b9f8cd96705053ae77fac58ac385c77cae3eccf1cacda59424f18a2fe5c629"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/HDFilmDelisi.cs3",
     "status": 1,
-    "version": 19,
+    "version": 20,
     "name": "HDFilmDelisi",
     "internalName": "HDFilmDelisi",
     "authors": [
       "ByAyzen"
     ],
     "description": "En yeni ve popüler filmleri Türkçe dublaj ve altyazı seçenekleriyle Full HD kalitede izleyin. Binlerce film tek tıkla sizlerle!",
-    "fileSize": 85343,
+    "fileSize": 86535,
     "repositoryUrl": "https://github.com/aytzey/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -776,7 +776,7 @@
     ],
     "iconUrl": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hdfilmdelisi.one/&size=128",
     "apiVersion": 1,
-    "fileHash": "sha256-531a7c1965761f3e37af0070bdcb464da1607537dfb2182b879070b4b00c3661"
+    "fileHash": "sha256-5c7fad8e7e188ea354f6be3d916e35b8eb42661e108d91d5e2b1c8021ecf9a88"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/HDFilmizle.cs3",
@@ -865,7 +865,7 @@
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/KraptorPlus.cs3",
     "status": 1,
-    "version": 88,
+    "version": 89,
     "name": "KraptorPlus",
     "internalName": "KraptorPlus",
     "authors": [
@@ -875,7 +875,7 @@
       "Megix"
     ],
     "description": "Bir çok sitenin birleştiği toplama eklenti.",
-    "fileSize": 623909,
+    "fileSize": 626000,
     "repositoryUrl": "https://github.com/aytzey/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -888,7 +888,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/aytzey/cs-kraptor/refs/heads/master/.github/icons/logo/kraptorplus.png",
     "apiVersion": 1,
-    "fileHash": "sha256-43496b06236f84683fec97aa01ed116354545f7c69963e42859b4f7cb70750b9"
+    "fileHash": "sha256-d167ce98226bfa9bb54d5834c101a0bbec091a49435c23951ac3d8335266a946"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/KultFilmler.cs3",
