@@ -66,5 +66,5 @@
 |YabanciDizi:https://yabancidizi.news
 |YeniKaynak:https://www.yenikaynak.com
 |YesilCamTv:https://yesilcamtv.com.tr
-|YTS:https://web.yts.gg
+|YTS:https://yts.pw
 |YTSYedek:https://en.yts.lu
