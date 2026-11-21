@@ -1,4 +1,5 @@
 """Rebuild the provider against the published base. Pass the Gradle lib directory and Android build-tools directory."""
+import hashlib
 import json
 from pathlib import Path
 import runpy
@@ -10,9 +11,11 @@ import zipfile
 
 HERE = Path(__file__).resolve().parent
 BASE = "4dd3805a5a189cbcc73b96302c455ff8e573992e"
-RELEASE_BASE = "b2e69b95348bb63307f4d2b1ad459104d2fc87aa"
+RELEASE_BASE = "61b4d5e0b6c1124a43ce954697d7f171d3181118"
 NAME = "HDFilmCehennemi"
 OLD = runpy.run_path(str(HERE.parent / "series-playback/build.py"))
+OKHTTP = Path("/home/aytzey/.agent-reach/kraptor-movie-fallback-qa-20261116/okhttp.jar")
+OKHTTP_SHA256 = "b1050081b14bb7a3a7e55a4d3ef01b5dcfabc453b4573a4fc019767191d5f4e0"
 
 
 def once(text, anchor, insert):
@@ -68,8 +71,25 @@ def hooks(text):
     return before + method + dispatch + text[end:]
 
 
+def interceptor(text):
+    anchor = ".method public intercept(Lokhttp3/Interceptor$Chain;)Lokhttp3/Response;"
+    assert text.count(anchor) == 1
+    wrapper = """
+.method public intercept(Lokhttp3/Interceptor$Chain;)Lokhttp3/Response;
+    .registers 3
+    invoke-static {p1, p0}, Lcom/kraptor/CfSolver;->intercept(Lokhttp3/Interceptor$Chain;Lokhttp3/Interceptor;)Lokhttp3/Response;
+    move-result-object v0
+    return-object v0
+.end method
+
+"""
+    original = anchor.replace(".method public intercept", ".method public originalIntercept")
+    return text.replace(anchor, wrapper + original, 1)
+
+
 def build(output, lib, android):
     run = OLD["run"]
+    assert hashlib.sha256(OKHTTP.read_bytes()).hexdigest() == OKHTTP_SHA256
     output.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as temp:
         work = Path(temp)
@@ -87,25 +107,27 @@ def build(output, lib, android):
         run("baksmali", "d", str(dex), "-o", str(original))
         source = original / "com/kraptor/HDFilmCehennemi.smali"
         source.write_text(hooks(source.read_text()))
+        cf = original / "com/kraptor/HDFilmCehennemi$CloudflareInterceptor.smali"
+        cf.write_text(interceptor(cf.read_text()))
         classes = work / "classes"
         stdlib, = lib.glob("kotlin-stdlib-[0-9]*.jar")
         run("java", "-cp", str(lib / "*"), "org.jetbrains.kotlin.cli.jvm.K2JVMCompiler",
             "-language-version", "1.9", "-api-version", "1.9", "-no-reflect", "-no-stdlib",
-            "-classpath", str(stdlib) + ":" + str(android_jar), "-d", str(classes), *map(str, sorted(HERE.glob("*.kt"))))
+            "-classpath", ":".join(map(str, (stdlib, android_jar, OKHTTP))), "-d", str(classes), *map(str, sorted(HERE.glob("*.kt"))))
         checks = work / "checks"
         run("java", "-cp", str(lib / "*"), "org.jetbrains.kotlin.cli.jvm.K2JVMCompiler",
             "-language-version", "1.9", "-no-reflect", "-no-stdlib", "-classpath",
-            ":".join(map(str, (classes, stdlib, android_jar))), "-d", str(checks), str(HERE / "checks/PeerChecks.kt"))
-        run("java", "-cp", ":".join(map(str, (classes, stdlib, checks, android_jar))), "com.kraptor.PeerChecksKt")
+            ":".join(map(str, (classes, stdlib, android_jar, OKHTTP))), "-d", str(checks), str(HERE / "checks/PeerChecks.kt"))
+        run("java", "-cp", ":".join(map(str, (classes, stdlib, checks, android_jar, OKHTTP))), "com.kraptor.PeerChecksKt")
         own = sorted((classes / "com/kraptor").glob("*.class"))
         assert own
         out = work / "helper"
         out.mkdir()
-        run(str(android / "d8"), "--min-api", "23", "--classpath", str(stdlib),
+        run(str(android / "d8"), "--min-api", "23", "--classpath", str(stdlib), "--classpath", str(OKHTTP),
             "--lib", str(android_jar), "--output", str(out), *map(str, own))
         run("baksmali", "d", str(out / "classes.dex"), "-o", str(out / "smali"))
         files = list((out / "smali").rglob("*.smali"))
-        assert all(f.parent.relative_to(out / "smali").as_posix() == "com/kraptor" and f.name.startswith(("PeerPlayback", "NativeSearch")) for f in files)
+        assert all(f.parent.relative_to(out / "smali").as_posix() == "com/kraptor" and f.name.startswith(("PeerPlayback", "NativeSearch", "CfSolver")) for f in files)
         for f in files:
             shutil.copyfile(f, source.parent / f.name)
         run("smali", "a", "-j", "1", str(original), "-o", str(dex))
@@ -115,7 +137,7 @@ def build(output, lib, android):
         prior.write_bytes(published(NAME + ".cs3", RELEASE_BASE))
         with zipfile.ZipFile(prior) as z:
             entries["manifest.json"] = z.read("manifest.json")
-        OLD["write_package"](entries, output / (NAME + ".cs3"), catalog, NAME, 103)
+        OLD["write_package"](entries, output / (NAME + ".cs3"), catalog, NAME, 104)
         (output / "plugins.json").write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + "\n")
 
 
