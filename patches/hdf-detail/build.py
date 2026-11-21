@@ -10,7 +10,7 @@ import zipfile
 
 HERE = Path(__file__).resolve().parent
 BASE = "4dd3805a5a189cbcc73b96302c455ff8e573992e"
-RELEASE_BASE = "4a5b658225b3e6e35c35b6126c3e6f6273201b43"
+RELEASE_BASE = "f8c55e0fb8a3b3630fc4406391f8e64be9d86950"
 NAME = "HDFilmCehennemi"
 OLD = runpy.run_path(str(HERE.parent / "series-playback/build.py"))
 
@@ -115,7 +115,7 @@ def build(output, lib, android):
         prior.write_bytes(published(NAME + ".cs3", RELEASE_BASE))
         with zipfile.ZipFile(prior) as z:
             entries["manifest.json"] = z.read("manifest.json")
-        OLD["write_package"](entries, output / (NAME + ".cs3"), catalog, NAME, 101)
+        OLD["write_package"](entries, output / (NAME + ".cs3"), catalog, NAME, 102)
         (output / "plugins.json").write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + "\n")
 
 

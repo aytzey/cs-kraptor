@@ -2,15 +2,13 @@ package com.kraptor
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Gravity
 import android.view.View
-import android.view.ViewGroup
-import android.view.WindowManager
-import android.webkit.WebResourceRequest
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -48,7 +46,7 @@ object ManualVerification {
         fun id(name: String) = activity.resources.getIdentifier(name, "id", activity.packageName)
         val error = activity.findViewById<TextView>(id("result_error_text")) ?: return
         val panel = error.parent as? LinearLayout ?: return
-        val retry = panel.findViewById<View>(id("result_reload_connectionerror")) ?: return
+        if (panel.findViewById<View>(id("result_reload_connectionerror")) == null) return
         if (panel.findViewWithTag<View>(buttonTag) != null) return
 
         val button = Button(activity).apply {
@@ -57,11 +55,7 @@ object ManualVerification {
             isAllCaps = false
             isFocusable = true
             setOnClickListener {
-                target(error.text.toString(), origin)?.let { url ->
-                    open(activity, url, origin) {
-                        if (retry.isShown && target(error.text.toString(), origin) == url) retry.performClick()
-                    }
-                }
+                target(error.text.toString(), origin)?.let { open(activity, it) }
             }
         }
         fun refresh() {
@@ -76,38 +70,24 @@ object ManualVerification {
         })
     }
 
-    private fun open(activity: Activity, url: String, origin: String, retry: () -> Unit) {
-        if (activity.isFinishing || activity.isDestroyed || !allowed(url, origin)) return
-        val web = try { WebView(activity) } catch (_: RuntimeException) {
-            Toast.makeText(activity, "Android WebView açılamadı.", Toast.LENGTH_LONG).show()
-            return
+    private fun open(activity: Activity, url: String) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).addCategory(Intent.CATEGORY_BROWSABLE)
+        try {
+            activity.startActivity(intent)
+        } catch (_: ActivityNotFoundException) {
+            AlertDialog.Builder(activity)
+                .setTitle("Tarayıcı gerekli")
+                .setMessage("Bu sayfayı açmak için bir tarayıcı gerekiyor. TV Bro’yu kurduktan sonra buraya dönüp Sitede doğrula’ya basabilirsin.")
+                .setNegativeButton("Kapat", null)
+                .setPositiveButton("Google Play’de aç") { _, _ ->
+                    val store = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.phlox.tvwebbrowser"))
+                        .setPackage("com.android.vending")
+                    try {
+                        activity.startActivity(store)
+                    } catch (_: ActivityNotFoundException) {
+                        Toast.makeText(activity, "Uygulama mağazandan bir tarayıcı kurabilirsin.", Toast.LENGTH_LONG).show()
+                    }
+                }.show()
         }
-        web.settings.apply {
-            javaScriptEnabled = true
-            domStorageEnabled = true
-            allowFileAccess = false
-            allowContentAccess = false
-        }
-        web.webViewClient = object : WebViewClient() {
-            override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean =
-                request.isForMainFrame && !allowed(request.url.toString(), origin)
-
-            @Deprecated("Android 6 navigation callback")
-            override fun shouldOverrideUrlLoading(view: WebView, next: String): Boolean = !allowed(next, origin)
-        }
-        val dialog = AlertDialog.Builder(activity).setTitle(URI(url).host)
-            .setView(web)
-            .setNegativeButton("Kapat", null)
-            .setPositiveButton("CloudStream’de yeniden dene") { _, _ -> retry() }
-            .create()
-        dialog.setOnDismissListener {
-            web.stopLoading()
-            (web.parent as? ViewGroup)?.removeView(web)
-            web.destroy()
-        }
-        dialog.show()
-        dialog.window?.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT)
-        web.requestFocus()
-        web.loadUrl(url)
     }
 }
