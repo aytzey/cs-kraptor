@@ -10,7 +10,7 @@ import zipfile
 
 HERE = Path(__file__).resolve().parent
 BASE = "4dd3805a5a189cbcc73b96302c455ff8e573992e"
-RELEASE_BASE = "f8c55e0fb8a3b3630fc4406391f8e64be9d86950"
+RELEASE_BASE = "b2e69b95348bb63307f4d2b1ad459104d2fc87aa"
 NAME = "HDFilmCehennemi"
 OLD = runpy.run_path(str(HERE.parent / "series-playback/build.py"))
 
@@ -105,7 +105,7 @@ def build(output, lib, android):
             "--lib", str(android_jar), "--output", str(out), *map(str, own))
         run("baksmali", "d", str(out / "classes.dex"), "-o", str(out / "smali"))
         files = list((out / "smali").rglob("*.smali"))
-        assert all(f.parent.relative_to(out / "smali").as_posix() == "com/kraptor" and f.name.startswith(("PeerPlayback", "ManualVerification")) for f in files)
+        assert all(f.parent.relative_to(out / "smali").as_posix() == "com/kraptor" and f.name.startswith(("PeerPlayback", "NativeSearch")) for f in files)
         for f in files:
             shutil.copyfile(f, source.parent / f.name)
         run("smali", "a", "-j", "1", str(original), "-o", str(dex))
@@ -115,7 +115,7 @@ def build(output, lib, android):
         prior.write_bytes(published(NAME + ".cs3", RELEASE_BASE))
         with zipfile.ZipFile(prior) as z:
             entries["manifest.json"] = z.read("manifest.json")
-        OLD["write_package"](entries, output / (NAME + ".cs3"), catalog, NAME, 102)
+        OLD["write_package"](entries, output / (NAME + ".cs3"), catalog, NAME, 103)
         (output / "plugins.json").write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + "\n")
 
 

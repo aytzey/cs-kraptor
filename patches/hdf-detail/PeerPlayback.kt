@@ -25,6 +25,16 @@ object PeerPlayback {
         if (titles.isNotEmpty()) cards.put(url, Identity(titles, year))
     }
 
+    fun searchTitle(url: String): String? {
+        cards[url]?.let { return it.titles.first() }
+        val path = URI(url).path
+        val slug = path.trimEnd('/').substringAfterLast('/')
+        val title = dated.matchEntire(path)?.groupValues?.get(2) ?: slug
+            .substringBefore("-izle").removePrefix("hd-")
+            .replace(Regex("-[0-9]{1,2}$"), "")
+        return title.replace('-', ' ').trim().takeIf { it.length in 1..200 && it.none(Char::isISOControl) }
+    }
+
     private fun sameSite(url: String, site: String): Boolean = try {
         val dest = URI(url)
         val origin = URI(site)
@@ -54,16 +64,32 @@ object PeerPlayback {
         val isSeries = path.startsWith("/dizi/")
         val identity = cards.get(url) ?: dated.matchEntire(path)?.let {
             Identity(listOf(words(it.groupValues[2])), it.groupValues[3].toInt())
-        } ?: throw ManualVerification.unavailable(owner.mainUrl)
-        val names = identity.titles.map(::words).toSet()
+        }
+        val titles = identity?.titles ?: listOfNotNull(searchTitle(url))
+        if (titles.isEmpty()) throw NativeSearch.unavailable(owner.mainUrl)
+        val names = titles.map(::words).toSet()
+        var suggestion: NativeSearch.Suggestion? = null
         for (name in if (isSeries) series else movies) {
             val api = APIHolder.getApiFromNameNull(name) ?: continue
             try {
-                val hits = api.search(identity.titles.first(), 1)?.items.orEmpty()
-                val hit = hits.filter { it.apiName == name && sameSite(it.url, api.mainUrl) && words(it.name) in names }
-                    .distinctBy { it.url }.singleOrNull() ?: continue
+                val hit = titles.firstNotNullOfOrNull { title ->
+                    val hits = api.search(title, 1)?.items.orEmpty()
+                    hits.filter { it.apiName == name && sameSite(it.url, api.mainUrl) && words(it.name) in names }
+                        .distinctBy { it.url }.singleOrNull()
+                } ?: continue
                 val detail = api.load(hit.url) ?: continue
-                if (detail.apiName != name || detail.year != identity.year || words(detail.name) !in names) continue
+                if (detail.apiName != name || words(detail.name) !in names) continue
+                if (identity == null) {
+                    val year = detail.year ?: continue
+                    if (year !in 1900..2099) continue
+                    if (isSeries && detail is TvSeriesLoadResponse && detail.episodes.isNotEmpty() ||
+                        !isSeries && detail is MovieLoadResponse) {
+                        suggestion = NativeSearch.Suggestion(url, name, hit.url, detail.name, year)
+                        break
+                    }
+                    continue
+                }
+                if (detail.year != identity.year) continue
                 when {
                     isSeries && detail is TvSeriesLoadResponse -> {
                         if (detail.episodes.isEmpty() || detail.episodes.any { !sameSite(it.data, api.mainUrl) }) continue
@@ -83,6 +109,6 @@ object PeerPlayback {
             } catch (e: CancellationException) { throw e }
             catch (_: Exception) { continue }
         }
-        throw ManualVerification.unavailable(owner.mainUrl)
+        throw NativeSearch.unavailable(owner.mainUrl, suggestion)
     }
 }

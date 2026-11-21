@@ -1,10 +1,10 @@
 package com.kraptor
 
 import android.app.Activity
-import android.app.AlertDialog
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
+import android.util.Base64
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Gravity
@@ -16,10 +16,16 @@ import android.widget.Toast
 import com.lagradost.cloudstream3.CommonActivity
 import com.lagradost.cloudstream3.ErrorLoadingException
 import java.net.URI
+import java.net.URLEncoder
 
-object ManualVerification {
+object NativeSearch {
     const val message = "HDFilmCehennemi sayfaya erişim izni vermedi (403)."
-    private const val buttonTag = "com.kraptor.hdf.manualVerification"
+    private const val buttonTag = "com.kraptor.hdf.nativeSearch"
+
+    data class Suggestion(val originalUrl: String, val provider: String, val url: String, val title: String, val year: Int) {
+        val label get() = "$provider · $title ($year)"
+    }
+    @Volatile private var lastSuggestion: Suggestion? = null
 
     private fun allowed(url: String, origin: String): Boolean = try {
         val page = URI(url)
@@ -31,14 +37,16 @@ object ManualVerification {
 
     fun target(text: String, origin: String): String? {
         val url = text.substringBefore('\n')
-        return url.takeIf { text.substringAfter('\n', "").contains(message) && allowed(it, origin) }
+        if (!text.substringAfter('\n', "").contains(message) || !allowed(url, origin)) return null
+        return PeerPlayback.searchTitle(url)
     }
 
-    fun unavailable(origin: String): ErrorLoadingException {
+    fun unavailable(origin: String, suggestion: Suggestion? = null): ErrorLoadingException {
+        if (suggestion != null) lastSuggestion = suggestion
         CommonActivity.activity?.let { activity ->
             activity.runOnUiThread { attach(activity, origin) }
         }
-        return ErrorLoadingException(message)
+        return ErrorLoadingException(if (suggestion == null) message else "$message\n${suggestion.label}")
     }
 
     private fun attach(activity: Activity, origin: String) {
@@ -51,11 +59,15 @@ object ManualVerification {
 
         val button = Button(activity).apply {
             tag = buttonTag
-            text = "Sitede doğrula"
+            text = "CloudStream’de başka kaynak aç"
             isAllCaps = false
             isFocusable = true
             setOnClickListener {
-                target(error.text.toString(), origin)?.let { open(activity, it) }
+                val shown = error.text.toString()
+                target(shown, origin)?.let { title ->
+                    val peer = lastSuggestion?.takeIf { it.originalUrl == shown.substringBefore('\n') && shown.endsWith(it.label) }
+                    open(activity, title, peer)
+                }
             }
         }
         fun refresh() {
@@ -70,24 +82,14 @@ object ManualVerification {
         })
     }
 
-    private fun open(activity: Activity, url: String) {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).addCategory(Intent.CATEGORY_BROWSABLE)
+    private fun open(activity: Activity, title: String, peer: Suggestion?) {
+        fun encode(value: String) = Base64.encodeToString(value.toByteArray(Charsets.UTF_8), Base64.NO_WRAP)
+        val uri = if (peer == null) Uri.parse("cloudstreamsearch://" + URLEncoder.encode(title, "UTF-8"))
+                  else Uri.parse("csshare:" + encode(peer.provider) + "?" + encode(peer.url))
         try {
-            activity.startActivity(intent)
+            activity.startActivity(Intent(Intent.ACTION_VIEW, uri).setPackage(activity.packageName))
         } catch (_: ActivityNotFoundException) {
-            AlertDialog.Builder(activity)
-                .setTitle("Tarayıcı gerekli")
-                .setMessage("Bu sayfayı açmak için bir tarayıcı gerekiyor. TV Bro’yu kurduktan sonra buraya dönüp Sitede doğrula’ya basabilirsin.")
-                .setNegativeButton("Kapat", null)
-                .setPositiveButton("Google Play’de aç") { _, _ ->
-                    val store = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.phlox.tvwebbrowser"))
-                        .setPackage("com.android.vending")
-                    try {
-                        activity.startActivity(store)
-                    } catch (_: ActivityNotFoundException) {
-                        Toast.makeText(activity, "Uygulama mağazandan bir tarayıcı kurabilirsin.", Toast.LENGTH_LONG).show()
-                    }
-                }.show()
+            Toast.makeText(activity, "CloudStream aramasına şu adı yaz: $title", Toast.LENGTH_LONG).show()
         }
     }
 }
