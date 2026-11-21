@@ -20,3 +20,5 @@ interface LoadResponse { var name: String; var url: String; var apiName: String;
 abstract class MovieLoadResponse: LoadResponse { abstract var dataUrl: String }
 abstract class TvSeriesLoadResponse: LoadResponse { abstract var episodes: List<Episode> }
 class Episode(var data: String)
+
+object CommonActivity { val activity: android.app.Activity? get() = null }

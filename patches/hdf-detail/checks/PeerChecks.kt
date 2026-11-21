@@ -37,6 +37,13 @@ private class Provider(override val name: String, override val mainUrl: String):
 suspend fun main() {
     val owner = Provider("HDFilmCehennemi", "https://source.test")
     val peer = Provider("FullHDFilmizlesene", "https://films.test")
+    val site = owner.mainUrl
+    val failure = ManualVerification.message
+    check(ManualVerification.target("$site/test/\n$failure", site) == "$site/test/")
+    check(ManualVerification.target("$site/test/\n404", site) == null)
+    for (other in listOf("file:///etc", "https://source.test.other/", "https://source.test@other.test/", "http://source.test/", "https://source.test:8443/")) {
+        check(ManualVerification.target("$other\n$failure", site) == null)
+    }
     APIHolder.testProvider = peer
     val url = owner.mainUrl + "/hoppers-29/"
     PeerPlayback.remember(url, "Hoplayanlar - Hoppers", "2026")

@@ -49,13 +49,12 @@ object PeerPlayback {
     }
 
     @JvmStatic suspend fun blocked(owner: MainAPI, url: String): LoadResponse {
-        val error = ErrorLoadingException("HDFilmCehennemi bu sayfaya erişim izni vermedi (403). Yapımı CloudStream aramasından başka bir kaynakta açabilirsiniz.")
-        if (!sameSite(url, owner.mainUrl)) throw error
+        if (!sameSite(url, owner.mainUrl)) throw ErrorLoadingException("Geçersiz HDFilmCehennemi adresi.")
         val path = URI(url).rawPath
         val isSeries = path.startsWith("/dizi/")
         val identity = cards.get(url) ?: dated.matchEntire(path)?.let {
             Identity(listOf(words(it.groupValues[2])), it.groupValues[3].toInt())
-        } ?: throw error
+        } ?: throw ManualVerification.unavailable(owner.mainUrl)
         val names = identity.titles.map(::words).toSet()
         for (name in if (isSeries) series else movies) {
             val api = APIHolder.getApiFromNameNull(name) ?: continue
@@ -84,6 +83,6 @@ object PeerPlayback {
             } catch (e: CancellationException) { throw e }
             catch (_: Exception) { continue }
         }
-        throw error
+        throw ManualVerification.unavailable(owner.mainUrl)
     }
 }
