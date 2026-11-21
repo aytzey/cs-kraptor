@@ -8,7 +8,7 @@ private class Provider(override val name: String, override val mainUrl: String):
     var playUrl = ""
     val detailUrl = "$mainUrl/film/hoplayanlar/"
     override suspend fun search(query: String, page: Int): SearchResponseList {
-        check(query == "Hoplayanlar" && page == 1)
+        check(query.equals("Hoplayanlar", true) && page == 1)
         return SearchResponseList(listOf(object : SearchResponse {
             override val name = "Hoplayanlar"
             override val apiName = this@Provider.name
@@ -38,21 +38,29 @@ suspend fun main() {
     val owner = Provider("HDFilmCehennemi", "https://source.test")
     val peer = Provider("FullHDFilmizlesene", "https://films.test")
     val site = owner.mainUrl
-    val failure = ManualVerification.message
-    check(ManualVerification.target("$site/test/\n$failure", site) == "$site/test/")
-    check(ManualVerification.target("$site/test/\n404", site) == null)
+    val failure = NativeSearch.message
+    check(NativeSearch.target("$site/test/\n$failure", site) == "test")
+    check(NativeSearch.target("$site/test/\n404", site) == null)
     for (other in listOf("file:///etc", "https://source.test.other/", "https://source.test@other.test/", "http://source.test/", "https://source.test:8443/")) {
-        check(ManualVerification.target("$other\n$failure", site) == null)
+        check(NativeSearch.target("$other\n$failure", site) == null)
     }
     APIHolder.testProvider = peer
     val url = owner.mainUrl + "/hoppers-29/"
     PeerPlayback.remember(url, "Hoplayanlar - Hoppers", "2026")
+    check(PeerPlayback.searchTitle(url) == "Hoplayanlar")
+    check(PeerPlayback.searchTitle("$site/dizi/silicon-valley-3/") == "silicon valley")
+    check(PeerPlayback.searchTitle("$site/hd-the-matrix-izle-hdf-hdf-8/") == "the matrix")
+    check(PeerPlayback.searchTitle("$site/dizi/3-body-problem-2024/") == "3 body problem")
+    check(PeerPlayback.searchTitle("$site/1917/") == "1917")
+    check(NativeSearch.target("$site/\n$failure", site) == null)
     val result = PeerPlayback.blocked(owner, url) as MovieLoadResponse
     check(result.url == url && result.uniqueUrl == url && result.apiName == owner.name)
     check(result.plot == "Yedek kaynak: FullHDFilmizlesene\n\nÖzet")
     check(PeerPlayback.links(result.dataUrl, true, {}, {}) && peer.playUrl == peer.detailUrl)
     check(!PeerPlayback.links(result.dataUrl.replace("films.test/", "films.test.example/"), true, {}, {}))
     check(!PeerPlayback.owns(peer.detailUrl))
+    val undated = runCatching { PeerPlayback.blocked(owner, "$site/hoplayanlar/") }.exceptionOrNull()
+    check(undated is ErrorLoadingException && undated.message.orEmpty().contains("FullHDFilmizlesene · Hoplayanlar (2026)"))
     peer.releaseYear = 1996
     check(runCatching { PeerPlayback.blocked(owner, url) }.exceptionOrNull() is ErrorLoadingException)
     check(runCatching { PeerPlayback.blocked(owner, "https://unrelated.test/hoppers-2026/") }.exceptionOrNull() is ErrorLoadingException)
