@@ -1,5 +1,5 @@
 |Animecix:https://animecix.tv
-|Animeler:https://animeler.pw
+|Animeler:https://animeler.live
 |Animely:https://animecim.tv
 |Animpow:https://global.animpow.com
 |Asyaanimeleri:https://asyaanimeleri.top
@@ -8,6 +8,7 @@
 |Atv:https://www.atv.com.tr
 |BelgeselX:https://belgeselx.com
 |Cizgimax:https://cizgimax.online
+|CizgiMax:https://cizgimax.online
 |CizgiveDizi:https://cizgivedizi.net
 |Ddizi:https://www.ddizi.tel
 |DizifilmORG:https://dizifilmizle.to
@@ -25,7 +26,7 @@
 |DiziYo:https://www.diziyo.so:443
 |DiziYou:https://www.diziyou.love
 |DMax:https://www.dmax.com.tr
-|FilmEkseni:https://filmekseni.vip
+|FilmEkseni:https://filmekseni.pro
 |FilmHane:https://www.filmhane.shop
 |FilmMakinesi:https://filmmakinesi.to
 |FilmModu:https://www.filmmodu.one
@@ -45,7 +46,7 @@
 |OpenAnime:https://openani.me
 |RareFilmm:https://rarefilmm.com
 |SeiCode:https://seiwatch.net
-|SelcukFlix:https://selcukflix.com
+|SelcukFlix:https://selcukflix.app
 |SezonlukDizi:https://sezonlukdizi.cc
 |SetFilmIzle:https://www.setfilmizle.ltd
 |ShowTv:https://www.showtv.com.tr
@@ -62,6 +63,7 @@
 |TvDiziler:https://tvdiziler.tv
 |UgurFilm:https://ugurfilm3.xyz
 |WebDramaTurkey:https://webdramaturkey2.com
+|WebteIzle:https://webteizle.info
 |WFilmizle:https://www.wfilmizle.pw
 |YabanciDizi:https://yabancidizi.news
 |YeniKaynak:https://www.yenikaynak.com
