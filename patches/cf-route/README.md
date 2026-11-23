@@ -36,6 +36,28 @@ Requirement: a current system WebView. Cloudflare keeps WebView 101 (the Z1Mini'
 10 image) in a reload loop. The Z1Mini now bind-mounts Chromium SystemWebView 160 from
 `/data/local/webview` through `/vendor/etc/init/z1mini-webview.rc`.
 
+## Bundled WebView kernel (Android 10+)
+
+`WebViewKernel.java` gives devices with an outdated WebView (major < 130, or after the
+challenge kept reloading) Chromium's own SystemWebView 160.0.8181.0 without root or a server:
+
+- `prepare()` runs from each plugin's `load()`, before CloudStream creates its first WebView.
+  It downloads only the `apks/SystemWebView.apk` entry of the Chromium snapshot zip (HTTP Range,
+  inflated in-stream, SHA-256 pinned: arm 66 MB, arm64 159 MB, x86_64 192 MB) into
+  `files/kraptor-webview/`, read-only. From the next app start the process uses it.
+- Hooks (after JonaNorman/WebViewUpgrade, Apache-2.0): the WebView update service (sCache and
+  Android 15+ WebViewUpdateManager) and the package manager answer with the downloaded APK;
+  its own components report disabled. Non-SDK access uses android.util.Property (LSPosed LSPass,
+  Apache-2.0), with Android 10 double reflection as fallback.
+- Plugins cannot declare renderer services, so the renderer runs in-process: the update service
+  answers `isMultiProcessEnabled=false`, and because Android 15/16 force multiprocess, the
+  provider is created right away and Chromium's `webview-sandboxed-renderer` switch is removed
+  before the browser starts (`CommandLine.d` / `g(String)`, R8 names checked in all three builds).
+
+Verified with HDF's challenge page: Z1Mini Android 10 (system 101, also inside CloudStream with a
+film playing), emulators Android 11 (system 83), 12 (91), 13 (109), 14 (113), 15 (124) and
+16 (133, also inside CloudStream: solve in 2.4 s).
+
 ## Removed from the catalog
 
 Home and search both failed on the Z1Mini (Android 10, TR connection) with the current

@@ -186,7 +186,11 @@ public final class CfSolver {
         while (SystemClock.elapsedRealtime() - started < TIMEOUT_MS) {
             String fresh = clearance(host);
             if (fresh != null && !fresh.equals(stale) && AGENTS.containsKey(host)) { solved = true; break; }
-            if (challengePages.get() >= MAX_CHALLENGE_PAGES) { Log.d(TAG, "challenge keeps reloading; WebView too old?"); break; }
+            if (challengePages.get() >= MAX_CHALLENGE_PAGES) {
+                Log.d(TAG, "challenge keeps reloading; WebView too old, fetching a current one");
+                WebViewKernel.fetch(activity);
+                break;
+            }
             SystemClock.sleep(POLL_MS);
         }
         main.post(new Runnable() {

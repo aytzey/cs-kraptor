@@ -62,6 +62,15 @@ FIXES = [
      "    invoke-virtual {v0, v2}, Lokhttp3/OkHttpClient$Builder;->addInterceptor(Lokhttp3/Interceptor;)Lokhttp3/OkHttpClient$Builder;\n\n"
      "    move-result-object v0\n"),
     ("FilmMakinesi", "com/kraptor/MovieBackup.smali", "    const-wide/16 v2, 0x8\n", "    const-wide/16 v2, 0x2d\n"),
+    # Plugins load before CloudStream first creates a WebView: the only moment the kernel can be swapped.
+    ("HDFilmCehennemi", "com/kraptor/HDFilmCehennemiPlugin.smali",
+     "    .line 26\n    sget-object v0, Lcom/kraptor/GlobalPluginChecker;",
+     "    invoke-static {p1}, Lcom/kraptor/WebViewKernel;->prepare(Landroid/content/Context;)V\n\n"
+     "    .line 26\n    sget-object v0, Lcom/kraptor/GlobalPluginChecker;"),
+    ("FilmMakinesi", "com/byayzen/FilmMakinesiPlugin.smali",
+     "    .line 26\n    sget-object v0, Lcom/byayzen/GlobalPluginChecker;",
+     "    invoke-static {p1}, Lcom/kraptor/WebViewKernel;->prepare(Landroid/content/Context;)V\n\n"
+     "    .line 26\n    sget-object v0, Lcom/byayzen/GlobalPluginChecker;"),
 ]
 
 
@@ -102,12 +111,12 @@ def solver_smali(work):
     assert hashlib.sha256(OKHTTP.read_bytes()).hexdigest() == OKHTTP_SHA256
     classes = work / "solver-classes"
     run("javac", "--release", "8", "-nowarn", "-cp", f"{ANDROID}:{OKHTTP}", "-d", str(classes),
-        str(HERE / "CfSolver.java"), *map(str, (HERE / "stubs").rglob("*.java")))
+        str(HERE / "CfSolver.java"), str(HERE / "WebViewKernel.java"), *map(str, (HERE / "stubs").rglob("*.java")))
     stubs = work / "stubs.jar"
     run("jar", "cf", str(stubs), "-C", str(classes), "com/lagradost")
     run("java", "-cp", str(D8), "com.android.tools.r8.D8", "--release", "--min-api", "23",
         "--lib", str(ANDROID), "--classpath", str(OKHTTP), "--classpath", str(stubs),
-        "--output", str(work), *map(str, sorted((classes / "com/kraptor").glob("CfSolver*.class"))))
+        "--output", str(work), *map(str, sorted((classes / "com/kraptor").glob("*.class"))))
     smali = work / "solver-smali"
     run("baksmali", "d", str(work / "classes.dex"), "-o", str(smali))
     (work / "classes.dex").unlink()
@@ -145,7 +154,7 @@ def build(output):
             package = smali / "com/kraptor"
             for old in package.glob("CfSolver*.smali"):
                 old.unlink()
-            for new in solver.glob("CfSolver*.smali"):
+            for new in solver.glob("*.smali"):
                 shutil.copyfile(new, package / new.name)
             run("smali", "a", "-j", "1", str(smali), "-o", str(work / "fixed.dex"))
             manifest = json.loads(entries["manifest.json"])
