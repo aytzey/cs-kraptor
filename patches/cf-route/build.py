@@ -117,7 +117,10 @@ def solver_smali(work):
 def build(output):
     output.mkdir(parents=True, exist_ok=True)
     base = subprocess.check_output(["git", "-C", str(REPO), "rev-parse", BASE_REF + "^{commit}"], text=True).strip()
-    catalog = json.loads(subprocess.check_output(["git", "-C", str(REPO), "show", base + ":plugins.json"]))
+    base_catalog = {p["internalName"]: p for p in
+                    json.loads(subprocess.check_output(["git", "-C", str(REPO), "show", base + ":plugins.json"]))}
+    # Versions continue from the published catalog, so each rebuild reaches devices as an update.
+    catalog = json.loads((REPO / "plugins.json").read_text())
     with tempfile.TemporaryDirectory(prefix="kraptor-cf-route-") as temporary:
         work = Path(temporary)
         solver = solver_smali(work)
@@ -147,8 +150,8 @@ def build(output):
             run("smali", "a", "-j", "1", str(smali), "-o", str(work / "fixed.dex"))
             manifest = json.loads(entries["manifest.json"])
             item = next(p for p in catalog if p["internalName"] == name)
-            assert manifest["version"] == item["version"], name
-            manifest["version"] += 1
+            assert manifest["version"] == base_catalog[name]["version"], name
+            manifest["version"] = item["version"] + 1
             entries["manifest.json"] = json.dumps(manifest, separators=(",", ":")).encode()
             entries["classes.dex"] = (work / "fixed.dex").read_bytes()
             target = output / (name + ".cs3")

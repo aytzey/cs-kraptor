@@ -17,8 +17,13 @@ HDFilmCehennemi 105 shipped a Kotlin `CfSolver` that never worked:
 for a new `cf_clearance` cookie, and repeats the request with that cookie and the WebView
 User-Agent. The main request sends `X-Requested-With` empty: HDFilmCehennemi answers
 `X-Requested-With: com.lagradost.cloudstream3` with an "app not supported" page instead of
-the challenge. A host gets at most one solve attempt per minute. 429 rate-limit pages are
-not treated as challenges.
+the challenge. After a solve the host may open a WebView again after one minute, after a
+failure after ten. 429 rate-limit pages are not treated as challenges.
+
+Outdated WebViews keep reloading the interstitial instead of passing it. After three
+"Just a moment" page loads the solver gives up (about 15 s on WebView 101, instead of the
+40 s timeout), and the plugin falls back exactly as 105 did. Devices that update "Android
+System WebView" from Play Store pass the challenge; boxes with a frozen old WebView do not.
 
 - HDFilmCehennemi 106: `load` and `loadLinks` requests use the plugin interceptor. The
   `PeerPlayback.owns` hook now skips the null arguments Kotlin passes when the suspended
@@ -65,6 +70,9 @@ CommonActivity stub is compile-only and is not packaged.
 - HDFilmCehennemi: `solve www.hdfilmcehennemi.nl -> ok` in 3.7–5.3 s. The detail page
   loaded and a film played (`tvctl verify`: position advanced 17 → 29 s, video frames,
   audio output active).
+- HDFilmCehennemi 107 with the box temporarily back on WebView 101: "challenge keeps
+  reloading", `solve -> fail in 14664 ms`, home filled from the FullHDFilmizlesene backup,
+  and parallel requests did not open another WebView.
 - FilmMakinesi: `solve filmmakinesi.to -> ok` in 4.1–4.6 s and the home page loaded. Its
   own search could not be confirmed: the site rate-limited the test IP ("Biraz
   yavaşlayalım") after repeated testing, and results came from the HDFilmCehennemi backup.

@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import okhttp3.Interceptor;
 import okhttp3.Request;
@@ -38,9 +39,12 @@ public final class CfSolver {
     private static final Map<String, Object> LOCKS = new HashMap<>();
     /** User-Agent of the WebView that earned each host's clearance; Cloudflare binds the cookie to it. */
     private static final Map<String, String> AGENTS = new ConcurrentHashMap<>();
-    /** Last solve attempt per host: at most one WebView per host per minute, whatever the outcome. */
-    private static final Map<String, Long> ATTEMPTS = new ConcurrentHashMap<>();
+    /** Earliest time each host may open a WebView again: one minute after a solve, ten after a failure. */
+    private static final Map<String, Long> NEXT_ATTEMPT = new ConcurrentHashMap<>();
     private static final long RETRY_AFTER_MS = 60_000L;
+    private static final long RETRY_AFTER_FAILURE_MS = 600_000L;
+    /** Outdated WebViews (e.g. 101 on Android 10 boxes) reload the interstitial forever; stop after this many. */
+    private static final int MAX_CHALLENGE_PAGES = 3;
 
     private CfSolver() { }
 
@@ -68,15 +72,15 @@ public final class CfSolver {
                 if (!isChallenge(retried)) return retried;
                 retried.close();
             }
-            Long last = ATTEMPTS.get(host);
-            long now = SystemClock.elapsedRealtime();
-            if (last != null && now - last < RETRY_AFTER_MS) return chain.proceed(withClearance(request, host));
-            ATTEMPTS.put(host, now);
+            Long next = NEXT_ATTEMPT.get(host);
+            if (next != null && SystemClock.elapsedRealtime() < next) return chain.proceed(withClearance(request, host));
             if (solve(request.url().toString(), host)) {
+                NEXT_ATTEMPT.put(host, SystemClock.elapsedRealtime() + RETRY_AFTER_MS);
                 Response solved = chain.proceed(withClearance(request, host));
                 Log.d(TAG, "after solve " + host + " " + solved.code());
                 return solved;
             }
+            NEXT_ATTEMPT.put(host, SystemClock.elapsedRealtime() + RETRY_AFTER_FAILURE_MS);
             return chain.proceed(request);
         }
     }
@@ -144,6 +148,7 @@ public final class CfSolver {
         final WebView[] holder = new WebView[1];
         final long started = SystemClock.elapsedRealtime();
         final String stale = clearance(host);  // rejected cookie from an earlier visit; wait for a new one
+        final AtomicInteger challengePages = new AtomicInteger();
         main.post(new Runnable() {
             @Override public void run() {
                 try {
@@ -158,7 +163,12 @@ public final class CfSolver {
                     CookieManager.getInstance().setAcceptThirdPartyCookies(view, true);
                     view.setFocusable(false);
                     view.setFocusableInTouchMode(false);
-                    view.setWebViewClient(new WebViewClient());
+                    view.setWebViewClient(new WebViewClient() {
+                        @Override public void onPageFinished(WebView page, String loaded) {
+                            String title = page.getTitle();
+                            if (title != null && title.contains("Just a moment")) challengePages.incrementAndGet();
+                        }
+                    });
                     root.addView(view, new FrameLayout.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
                     holder[0] = view;
@@ -176,6 +186,7 @@ public final class CfSolver {
         while (SystemClock.elapsedRealtime() - started < TIMEOUT_MS) {
             String fresh = clearance(host);
             if (fresh != null && !fresh.equals(stale) && AGENTS.containsKey(host)) { solved = true; break; }
+            if (challengePages.get() >= MAX_CHALLENGE_PAGES) { Log.d(TAG, "challenge keeps reloading; WebView too old?"); break; }
             SystemClock.sleep(POLL_MS);
         }
         main.post(new Runnable() {
