@@ -76,6 +76,48 @@ Close player (HDFilmCehennemi 109, Z1Mini): "Karlar Düşerken Aşk" and "Merry 
 Lawrence" (Close sources only, previously no links) and "Russell Brand: Open Secret" (Rapidrame and
 Close) played with advancing position and active audio output; extraction took 1.0–8.0 s per source.
 
+## FilmMakinesi, 2026-11-25
+
+A second TV showed HDFilmCehennemi working and FilmMakinesi not opening. Three causes, all fixed in
+FilmMakinesi 78 / HDFilmCehennemi 110:
+
+- **Rate limit.** filmmakinesi.to answers the app with a ten-minute IP block (429 "Biraz yavaşlayalım",
+  `Retry-After: 600`) once it has made about a dozen page requests within a minute. With 2 s, 3 s and 5 s
+  gaps the block came at the 12th request after the challenge every time. The home page fired its 14
+  sections in 2–3 s, so every film page afterwards failed. A desktop browser on the same IP made 147
+  requests at one per 2 s without a block, so the stricter limit applies to app traffic. Same-site
+  requests from a hidden WebView's `fetch()` were blocked the same way, and with WebView's
+  `X-Requested-With` header the firewall answered "Attention Required". Player hosts (closeload., rapid.)
+  are not counted.
+  FilmMakinesi's page requests now go through `CfSolver.PACED` (search, details, links) and `PACED_HOME`
+  (home sections): one request per 8 s per host, and home sections wait while a user request is queued.
+  CloudStream shows the home page only after every section has loaded, so the home page keeps its first
+  five sections (latest films, Netflix, Disney, Amazon, "Ölmeden İzle"); genres remain reachable through
+  search.
+- **Decoy Close stream.** closeload.filmmakinesi.to runs the same Close player as HDFilmCehennemi. Its
+  `jwplayer().setup()` config, which the bundled CloseLoadExtractor still reads, now holds a 90 s sample
+  video (`videosamplemp4`), and CloudStream listed and played it first. In WebView the page never produced
+  a stream, and a plain fetch answered 404. Both sites embed the same ids (Fjord: `A6HYLfcXm6a6` on each),
+  so `HdfPlayer.mirror()` resolves a closeload id on hdfilmcehennemi.mobi. Close embeds never fall back to
+  the bundled extractor; when the id is unknown there, the film's Rapid source remains.
+- **Kernel install race.** Each plugin loads its own copy of `WebViewKernel`, so `synchronized` did not
+  keep HDFilmCehennemi and FilmMakinesi apart. On an outdated-WebView device both installed the kernel at
+  once ("cannot create kernel-libs"). The lock is now a string literal (interned VM-wide), and directory
+  creation tolerates a concurrent `mkdirs`.
+
+The solver's WebView no longer loads the site's own images and scripts (only the main frame, `/cdn-cgi/`
+and other hosts), and 429 answers are logged (`KraptorCf: rate limited <host>, retry after N s`).
+
+Evidence:
+
+- Emulator, Android 11 (system WebView 83, bundled kernel 160 installed once): FilmMakinesi home loaded
+  after `solve filmmakinesi.to -> ok`; HDFilmCehennemi solved in 1.6 s and Fjord played through Close
+  (`stream from srv12.cdnimages3899.cyou in 1004 ms`) and RapidRame.
+- Z1Mini, CloudStream 4.9.1: a cold FilmMakinesi session (solve, home, search, details, links) with no 429.
+  "Sosyal Hesaplaşma" listed `FilmMakinesi - Close` (`thesocialreckoning-2026-…-Ju5Pr9UYItQ`, 3.2 s) and
+  RapidRame, without the decoy, and played. The five-section home page appeared 65 s after a cold app
+  start (over two minutes with 14 sections).
+
 ## Removed from the catalog
 
 Home and search both failed on the Z1Mini (Android 10, TR connection) with the current

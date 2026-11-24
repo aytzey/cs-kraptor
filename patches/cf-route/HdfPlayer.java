@@ -32,38 +32,78 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * HDFilmCehennemi's "Close" player (hdfilmcehennemi.mobi/video/embed/...) no longer embeds its stream
- * URL: the page posts a fingerprint to .../kn/ and decodes the answer in obfuscated JavaScript, then
- * calls window.knKur(url, tracks). The page runs in an off-screen WebView and the result is read from
- * window.knAdres. Every other iframe still goes to CloudStream's loadExtractor.
+ * HDFilmCehennemi's "Close" player (hdfilmcehennemi.mobi/video/embed/...) no longer embeds its stream URL: the
+ * page posts a fingerprint to .../kn/ and decodes the answer in obfuscated JavaScript, then calls
+ * window.knKur(url, tracks). The page runs in an off-screen WebView and the result is read from window.knAdres.
+ * FilmMakinesi's closeload.<site> embeds go to the same id on hdfilmcehennemi.mobi (see mirror()) and never to
+ * its bundled CloseLoadExtractor, which only finds the page's 90 s decoy ("videosamplemp4") that CloudStream
+ * then plays first. Every other iframe still goes to CloudStream's loadExtractor.
  */
 public final class HdfPlayer {
     private static final String TAG = "KraptorHdf";
-    private static final String EMBED = "https://hdfilmcehennemi.mobi/video/embed/";
+    private static final String HDF = "hdfilmcehennemi.mobi";
+    private static final String HDF_SITE = "https://www.hdfilmcehennemi.nl/";
+    private static final String CLOSELOAD = "closeload.";
+    private static final String EMBED = "/video/embed/";
     private static final long TIMEOUT_MS = 25_000L;
-    private static final String READ = "(function(){return window.knAdres===undefined?null:"
-        + "JSON.stringify({u:String(window.knAdres||''),t:window.knT||[]});})()";
+    // Some pages define window.knAdres empty up front and fill it once the /kn/ answer is decoded.
+    private static final String READ = "(function(){return window.knAdres?"
+        + "JSON.stringify({u:String(window.knAdres),t:window.knT||[]}):null;})()";
 
     private HdfPlayer() { }
 
-    /** Same signature as ExtractorApiKt.loadExtractor, which HDFilmCehennemi.loadLinks called here. */
+    /** Same signature as ExtractorApiKt.loadExtractor, which the plugins' loadLinks called here. */
     public static Object load(String url, String referer, Function1 subtitles, Function1 callback, Continuation completion) {
-        if (url != null && url.startsWith(EMBED)) {
+        String embed = url == null ? null : url.replace("{rapidrame_id}", "");
+        String mirror = mirror(embed);
+        if (mirror != null) {
             try {
-                if (extract(url.replace("{rapidrame_id}", ""), subtitles, callback)) return Boolean.TRUE;
+                if (Boolean.TRUE.equals(extract(mirror, "FilmMakinesi", subtitles, callback))) return Boolean.TRUE;
             } catch (Throwable error) {
                 Log.w(TAG, "player failed: " + error);
             }
+            return Boolean.FALSE;
+        }
+        try {
+            Boolean handled = isClose(embed, HDF) ? extract(embed, "HDFilmCehennemi", subtitles, callback) : null;
+            if (handled != null) return handled;
+        } catch (Throwable error) {
+            Log.w(TAG, "player failed: " + error);
         }
         return ExtractorApiKt.loadExtractor(url, referer, subtitles, callback, completion);
     }
 
-    private static boolean extract(final String url, Function1 subtitles, Function1 callback) throws Exception {
+    /**
+     * FilmMakinesi's closeload.<site>/video/embed/<id>/ as the same id on HDFilmCehennemi's Close host, else null.
+     * closeload answered a plain fetch with 404 and its page never produced a stream in WebView; both sites embed
+     * the same ids (Fjord: A6HYLfcXm6a6 on each). shortcut: relies on that shared backend (Nov 2026); an id HDF
+     * does not know just skips the Close source, the film's Rapid source still plays.
+     */
+    static String mirror(String url) {
+        if (url == null || !isClose(url, CLOSELOAD)) return null;
+        return "https://" + HDF + URI.create(url).getPath();
+    }
+
+    /** An https Close embed whose host is {@code host}, or starts with it when it ends in a dot. */
+    static boolean isClose(String url, String host) {
+        try {
+            URI uri = URI.create(url);
+            String name = uri.getHost();
+            String path = uri.getPath();
+            if (!"https".equals(uri.getScheme()) || name == null || path == null || !path.startsWith(EMBED)) return false;
+            return host.endsWith(".") ? name.startsWith(host) && name.length() > host.length() : name.equals(host);
+        } catch (IllegalArgumentException | NullPointerException notUrl) {
+            return false;
+        }
+    }
+
+    /** TRUE/FALSE: a Close page, with or without a stream. null: another player format, for loadExtractor. */
+    private static Boolean extract(final String url, String source, Function1 subtitles, Function1 callback) throws Exception {
         final Activity activity = CommonActivity.INSTANCE.getActivity();
-        if (activity == null) return false;
+        if (activity == null) return null;
         final String agent = WebSettings.getDefaultUserAgent(activity);
         final String html = fetch(url, agent);
-        if (!html.contains("knKur")) return false;  // older player format: let the bundled extractor handle it
+        if (!html.contains("knKur")) return null;  // older player format: let the bundled extractor handle it
 
         final Handler main = new Handler(Looper.getMainLooper());
         final WebView[] holder = new WebView[1];
@@ -107,19 +147,20 @@ public final class HdfPlayer {
             }
         });
         String raw = result.get();
-        if (raw == null) { Log.d(TAG, "no answer from player in " + TIMEOUT_MS + " ms"); return false; }
+        if (raw == null) { Log.d(TAG, "no answer from player in " + TIMEOUT_MS + " ms"); return Boolean.FALSE; }
         // evaluateJavascript returns a JSON-encoded string.
         JSONObject answer = new JSONObject(new JSONArray("[" + raw + "]").getString(0));
         String stream = answer.optString("u", "");
-        if (stream.isEmpty()) { Log.d(TAG, "player answered without a stream"); return false; }
+        if (stream.isEmpty()) { Log.d(TAG, "player answered without a stream"); return Boolean.FALSE; }
         URI uri = URI.create(url).resolve(stream);
-        if (!"https".equals(uri.getScheme()) || uri.getHost() == null || uri.getUserInfo() != null) return false;
+        if (!"https".equals(uri.getScheme()) || uri.getHost() == null || uri.getUserInfo() != null) return Boolean.FALSE;
 
+        String origin = "https://" + URI.create(url).getHost();
         Map<String, String> headers = new HashMap<>();
         headers.put("User-Agent", agent);
-        headers.put("Origin", "https://hdfilmcehennemi.mobi");
-        callback.invoke(new ExtractorLink("HDFilmCehennemi", "HDFilmCehennemi - Close", uri.toString(),
-            "https://hdfilmcehennemi.mobi/", 0, ExtractorLinkType.M3U8, headers, null));
+        headers.put("Origin", origin);
+        callback.invoke(new ExtractorLink(source, source + " - Close", uri.toString(),
+            origin + "/", 0, ExtractorLinkType.M3U8, headers, null));
         JSONArray tracks = answer.optJSONArray("t");
         for (int i = 0; tracks != null && i < tracks.length(); i++) {
             JSONObject track = tracks.optJSONObject(i);
@@ -130,7 +171,7 @@ public final class HdfPlayer {
             subtitles.invoke(new SubtitleFile(track.optString("label", "Türkçe"), URI.create(url).resolve(file).toString()));
         }
         Log.d(TAG, "stream from " + uri.getHost() + " in " + (SystemClock.elapsedRealtime() - started) + " ms");
-        return true;
+        return Boolean.TRUE;
     }
 
     private static String fetch(String url, String agent) throws Exception {
@@ -138,7 +179,7 @@ public final class HdfPlayer {
         connection.setConnectTimeout(15000);
         connection.setReadTimeout(15000);
         connection.setRequestProperty("User-Agent", agent);
-        connection.setRequestProperty("Referer", "https://www.hdfilmcehennemi.nl/");
+        connection.setRequestProperty("Referer", HDF_SITE);
         // Without a browser-like Accept header the player answers 404.
         connection.setRequestProperty("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
         connection.setRequestProperty("Accept-Language", "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7");

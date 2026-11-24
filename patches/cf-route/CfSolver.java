@@ -1,12 +1,15 @@
 package com.kraptor;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.ViewGroup;
 import android.webkit.CookieManager;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -14,7 +17,9 @@ import android.widget.FrameLayout;
 
 import com.lagradost.cloudstream3.CommonActivity;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InterruptedIOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -53,6 +58,58 @@ public final class CfSolver {
         @Override public Response intercept(Chain chain) throws IOException { return CfSolver.intercept(chain, null); }
     };
 
+    /**
+     * INTERCEPTOR plus at most one request per PACE_MS to each host. FilmMakinesi blocks an IP for ten
+     * minutes (429 "Biraz yavaşlayalım", Retry-After 600) at about a dozen app page requests a minute (2, 3
+     * and 5 s gaps all tripped it at the 12th; 8 s held). Its home page used to fire 14 at once.
+     * PACED is for what the user opened (search, details, links); PACED_HOME (home sections) waits while
+     * any PACED request is queued.
+     */
+    public static final Interceptor PACED = paced(true);
+    public static final Interceptor PACED_HOME = paced(false);
+    static final long PACE_MS = 8_000L;
+    /** host -> {time of its last request, PACED requests waiting} */
+    private static final Map<String, long[]> LANES = new HashMap<>();
+
+    private static Interceptor paced(final boolean user) {
+        return new Interceptor() {
+            @Override public Response intercept(Chain chain) throws IOException {
+                pace(chain.request().url().host(), user);
+                return CfSolver.intercept(chain, null);
+            }
+        };
+    }
+
+    static void pace(String host, boolean user) throws IOException {
+        long[] lane;
+        synchronized (LANES) {
+            lane = LANES.get(host);
+            if (lane == null) { lane = new long[]{Long.MIN_VALUE / 2, 0}; LANES.put(host, lane); }
+            if (user) lane[1]++;
+        }
+        boolean waiting = user;
+        try {
+            while (true) {
+                long wait;
+                synchronized (LANES) {
+                    long now = SystemClock.elapsedRealtime();
+                    wait = lane[0] + PACE_MS - now;
+                    if (wait <= 0 && (user || lane[1] == 0)) {
+                        lane[0] = now;
+                        if (waiting) { lane[1]--; waiting = false; }
+                        return;
+                    }
+                }
+                Thread.sleep(Math.max(wait, 100L));
+            }
+        } catch (InterruptedException cancelled) {
+            Thread.currentThread().interrupt();
+            throw new InterruptedIOException("cancelled while pacing " + host);
+        } finally {
+            if (waiting) synchronized (LANES) { lane[1]--; }
+        }
+    }
+
     /** Called by each plugin's CloudflareInterceptor; {@code original} is kept for signature compatibility. */
     public static Response intercept(Interceptor.Chain chain, Interceptor original) throws IOException {
         Request request = chain.request();
@@ -61,6 +118,7 @@ public final class CfSolver {
 
         String before = clearance(host);
         Response response = chain.proceed(withClearance(request, host));
+        if (response.code() == 429) Log.d(TAG, "rate limited " + host + ", retry after " + response.header("Retry-After") + " s");
         if (!isChallenge(response)) return response;
         response.close();
         Log.d(TAG, "challenge " + host + " " + response.code() + (before == null ? "" : " (with clearance)"));
@@ -167,6 +225,14 @@ public final class CfSolver {
                         @Override public void onPageFinished(WebView page, String loaded) {
                             String title = page.getTitle();
                             if (title != null && title.contains("Just a moment")) challengePages.incrementAndGet();
+                        }
+
+                        /** Only the challenge needs to load: the site's own images and scripts count toward its rate limit. */
+                        @Override public WebResourceResponse shouldInterceptRequest(WebView page, WebResourceRequest asked) {
+                            Uri uri = asked.getUrl();
+                            String path = uri.getPath();
+                            if (asked.isForMainFrame() || !host.equals(uri.getHost()) || (path != null && path.startsWith("/cdn-cgi/"))) return null;
+                            return new WebResourceResponse("text/plain", "utf-8", 204, "No Content", null, new ByteArrayInputStream(new byte[0]));
                         }
                     });
                     root.addView(view, new FrameLayout.LayoutParams(

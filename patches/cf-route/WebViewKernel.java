@@ -68,6 +68,13 @@ public final class WebViewKernel {
     private static final Kernel X64 = new Kernel("x64", "AndroidDesktop_x64/1752440/chrome-android-desktop.zip",
         313409499L, 191762846L, 416148290L, "718cb2dcce2a2f4a239a1128b9cd8fcb36720aba811c9838c525259c532867cd");
 
+    /**
+     * Each plugin ships its own copy of this class (one class loader per plugin), so `synchronized` on the
+     * class would not keep HDFilmCehennemi and FilmMakinesi apart. String literals are interned VM-wide:
+     * every copy locks the same object.
+     */
+    private static final String PROPERTY = "kraptor.webview.kernel";
+
     private WebViewKernel() { }
 
     /**
@@ -76,7 +83,7 @@ public final class WebViewKernel {
      */
     public static void prepare(Context context) {
         try {
-            if (System.getProperty("kraptor.webview.kernel") != null) return;
+            if (System.getProperty(PROPERTY) != null) return;
             if (Build.VERSION.SDK_INT < 29) return;  // the pinned Chromium needs Android 10
             File dir = new File(context.getFilesDir(), DIRECTORY);
             boolean wanted = new File(dir, "wanted").exists();  // Cloudflare looped on this device before
@@ -129,7 +136,7 @@ public final class WebViewKernel {
         Kernel kernel = kernel();
         File apk = apk(context);
         File dir = apk.getParentFile();
-        if (!dir.isDirectory() && !dir.mkdirs()) throw new IllegalStateException("cannot create " + dir);
+        if (!dir.mkdirs() && !dir.isDirectory()) throw new IllegalStateException("cannot create " + dir);
         new File(dir, "wanted").createNewFile();
         File ok = new File(apk.getPath() + ".ok");
         if (ok.isFile() && apk.length() == kernel.size) return;
@@ -200,8 +207,14 @@ public final class WebViewKernel {
     }
 
     /** Returns true when the process will use {@code apk} as its WebView. */
-    public static synchronized boolean install(Context context, File apk) {
-        if (System.getProperty("kraptor.webview.kernel") != null) return true;  // another plugin did it
+    public static boolean install(Context context, File apk) {
+        synchronized (PROPERTY) {
+            return installLocked(context, apk);
+        }
+    }
+
+    private static boolean installLocked(Context context, File apk) {
+        if (System.getProperty(PROPERTY) != null) return true;  // another plugin did it
         try {
             if (Build.VERSION.SDK_INT < 29) {  // the pinned Chromium needs Android 10
                 Log.d(TAG, "unsupported Android " + Build.VERSION.SDK_INT);
@@ -220,7 +233,7 @@ public final class WebViewKernel {
             hookPackageManager(context, kernel.packageName, apk);
             hookUpdateService(kernel);
             singleProcess(factory);
-            System.setProperty("kraptor.webview.kernel", kernel.versionName);
+            System.setProperty(PROPERTY, kernel.versionName);
             Log.d(TAG, "WebView kernel " + kernel.packageName + " " + kernel.versionName + " from " + apk);
             return true;
         } catch (Throwable error) {
@@ -277,7 +290,7 @@ public final class WebViewKernel {
         ApplicationInfo app = info.applicationInfo;
         app.sourceDir = app.publicSourceDir = apk.getPath();
         File libs = new File(apk.getParentFile(), "kernel-libs");
-        if (!libs.isDirectory() && !libs.mkdirs()) throw new IllegalStateException("cannot create " + libs);
+        if (!libs.mkdirs() && !libs.isDirectory()) throw new IllegalStateException("cannot create " + libs);
         app.nativeLibraryDir = libs.getPath();
         // extractNativeLibs=false: libraries load straight from "<apk>!/lib/<abi>".
         String abi = Build.SUPPORTED_ABIS[0];

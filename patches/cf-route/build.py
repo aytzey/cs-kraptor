@@ -30,31 +30,50 @@ D8 = Path("/home/aytzey/dev-tools/android-sdk/build-tools/36.0.0/lib/d8.jar")
 OKHTTP = Path("/home/aytzey/.agent-reach/kraptor-movie-fallback-qa-20261116/okhttp.jar")
 OKHTTP_SHA256 = "b1050081b14bb7a3a7e55a4d3ef01b5dcfabc453b4573a4fc019767191d5f4e0"
 
-# plugin -> (smali class, methods whose page requests get the interceptor,
-#            smali that stores the interceptor in register {reg})
+HDF_INTERCEPTOR = ("invoke-direct/range {{p0 .. p0}}, Lcom/kraptor/HDFilmCehennemi;->getInterceptor()"
+                   "Lcom/kraptor/HDFilmCehennemi$CloudflareInterceptor;\n    move-result-object v{reg}")
+FM_PACED = "sget-object v{reg}, Lcom/kraptor/CfSolver;->%s:Lokhttp3/Interceptor;"
+
+# plugin -> (smali class, {method whose page requests get an interceptor: smali that stores it in register {reg}})
 TARGETS = {
     "HDFilmCehennemi": (
         "com/kraptor/HDFilmCehennemi.smali",
-        ("load(", "loadLinks("),
-        "invoke-direct/range {{p0 .. p0}}, Lcom/kraptor/HDFilmCehennemi;->getInterceptor()"
-        "Lcom/kraptor/HDFilmCehennemi$CloudflareInterceptor;\n    move-result-object v{reg}",
+        {"load(": HDF_INTERCEPTOR, "loadLinks(": HDF_INTERCEPTOR},
     ),
     "FilmMakinesi": (
         "com/byayzen/FilmMakinesi.smali",
-        ("homeOriginal(", "searchOriginal(", "loadOriginal(", "linksOriginal("),
-        "sget-object v{reg}, Lcom/kraptor/CfSolver;->INTERCEPTOR:Lokhttp3/Interceptor;",
+        {"homeOriginal(": FM_PACED % "PACED_HOME", "searchOriginal(": FM_PACED % "PACED",
+         "loadOriginal(": FM_PACED % "PACED", "linksOriginal(": FM_PACED % "PACED"},
     ),
 }
 
 
-# Exact smali edits applied after routing: (plugin, file, old, new). Each old text must occur once.
+LOAD_EXTRACTOR = ("Lcom/lagradost/cloudstream3/utils/ExtractorApiKt;->loadExtractor(Ljava/lang/String;Ljava/lang/String;"
+                  "Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;")
+CLOSE_PLAYER = LOAD_EXTRACTOR.replace("Lcom/lagradost/cloudstream3/utils/ExtractorApiKt;->loadExtractor",
+                                      "Lcom/kraptor/HdfPlayer;->load")
+
+# Exact smali edits applied after routing: (plugin, file, old, new[, occurrences]). Old text must occur
+# exactly `occurrences` times (default once).
 FIXES = [
     # HDFilmCehennemi's "Close" player now hides its stream behind a scripted POST; HdfPlayer runs it.
-    ("HDFilmCehennemi", "com/kraptor/HDFilmCehennemi.smali",
-     "Lcom/lagradost/cloudstream3/utils/ExtractorApiKt;->loadExtractor(Ljava/lang/String;Ljava/lang/String;"
-     "Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;",
-     "Lcom/kraptor/HdfPlayer;->load(Ljava/lang/String;Ljava/lang/String;"
-     "Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;"),
+    ("HDFilmCehennemi", "com/kraptor/HDFilmCehennemi.smali", LOAD_EXTRACTOR, CLOSE_PLAYER),
+    # FilmMakinesi's closeload.<site> runs the same Close player; its bundled CloseLoadExtractor still waits
+    # for jwplayer().setup(configs), which the page no longer calls. Both iframe loops go through HdfPlayer.
+    ("FilmMakinesi", "com/byayzen/FilmMakinesi.smali", LOAD_EXTRACTOR, CLOSE_PLAYER, 2),
+    # FilmMakinesi answers the app with a ten-minute block above about a dozen page requests a minute, so its
+    # requests are paced (CfSolver.PACED). CloudStream shows the home page only once every section has loaded:
+    # 14 sections took over two minutes on the Z1Mini, so the home page keeps the first five (latest films,
+    # Netflix, Disney, Amazon, "Ölmeden İzle"); genres are still reachable through search.
+    ("FilmMakinesi", "com/byayzen/FilmMakinesi.smali",
+     ".method public getMainPage()Ljava/util/List;\n    .registers 2\n",
+     ".method public getMainPage()Ljava/util/List;\n    .registers 4\n"),
+    ("FilmMakinesi", "com/byayzen/FilmMakinesi.smali",
+     "    iget-object v0, p0, Lcom/byayzen/FilmMakinesi;->mainPage:Ljava/util/List;\n\n    return-object v0\n",
+     "    iget-object v0, p0, Lcom/byayzen/FilmMakinesi;->mainPage:Ljava/util/List;\n\n"
+     "    const/4 v1, 0x0\n\n    const/4 v2, 0x5\n\n"
+     "    invoke-interface {v0, v1, v2}, Ljava/util/List;->subList(II)Ljava/util/List;\n\n"
+     "    move-result-object v0\n\n    return-object v0\n"),
     # The 105 PeerPlayback hook runs on every entry of the loadLinks state machine. Kotlin re-enters
     # suspended methods with null arguments, so owns(null) threw after the first network call.
     ("HDFilmCehennemi", "com/kraptor/HDFilmCehennemi.smali",
@@ -84,10 +103,10 @@ def run(*args, cwd=None):
     subprocess.run(args, cwd=cwd, check=True, stdout=subprocess.DEVNULL)
 
 
-def route(text, methods, getter):
-    """Give every Requests.get call in `methods` the interceptor; return (text, patched call count)."""
+def route(text, methods):
+    """Give every Requests.get call in each method its interceptor; return (text, patched call count)."""
     count = 0
-    for name in methods:
+    for name, getter in methods.items():
         if ".method public " + name not in text:
             continue
         start = text.index(".method public " + name)
@@ -139,7 +158,7 @@ def build(output):
     with tempfile.TemporaryDirectory(prefix="kraptor-cf-route-") as temporary:
         work = Path(temporary)
         solver = solver_smali(work)
-        for name, (path, methods, getter) in TARGETS.items():
+        for name, (path, methods) in TARGETS.items():
             archive = work / (name + ".cs3")
             archive.write_bytes(subprocess.check_output(["git", "-C", str(REPO), "show", f"{base}:{name}.cs3"]))
             with zipfile.ZipFile(archive) as z:
@@ -148,14 +167,15 @@ def build(output):
             smali = work / (name + "-smali")
             run("baksmali", "d", str(work / "plugin.dex"), "-o", str(smali))
             source = smali / path
-            patched, count = route(source.read_text(), methods, getter)
+            patched, count = route(source.read_text(), methods)
             assert count >= 1, f"{name}: no call sites patched"
             source.write_text(patched)
-            for plugin, file, before, after in FIXES:
+            for plugin, file, before, after, *occurrences in FIXES:
                 if plugin == name:
                     target_file = smali / file
                     text = target_file.read_text()
-                    assert text.count(before) == 1, f"{name}: fix site not unique in {file}"
+                    expected = occurrences[0] if occurrences else 1
+                    assert text.count(before) == expected, f"{name}: expected {expected} fix sites in {file}"
                     target_file.write_text(text.replace(before, after))
             package = smali / "com/kraptor"
             for old in package.glob("CfSolver*.smali"):
