@@ -25,7 +25,7 @@
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/Animely.cs3",
     "status": 1,
-    "version": 5,
+    "version": 6,
     "name": "Animely",
     "internalName": "Animely",
     "authors": [
@@ -33,7 +33,7 @@
       "ByAyzen"
     ],
     "description": "Animely ile en sevdiğiniz animeleri Türkçe altyazılı olarak HD kalitede izleyin. Güncel sezon animeleri, klasikler ve çok daha fazlası. Hemen ücretsiz hesap oluşturun ve anime dünyasına katılın. Binlerce bölüm anime içeriğiyle sizleri bekliyor!",
-    "fileSize": 40168,
+    "fileSize": 39718,
     "repositoryUrl": "https://github.com/aytzey/cs-kraptor",
     "language": "tr",
     "tvTypes": [
@@ -43,7 +43,7 @@
     ],
     "iconUrl": "https://play-lh.googleusercontent.com/BIE1R3FVOpIoCPxkx3Erfuw5sVc5wVIbeHAcRuTUGesuvc1S1Cr6KYumGVbn7xABuLc=w240-h480",
     "apiVersion": 1,
-    "fileHash": "sha256-97ff6af8b4cb4b2f66302df3a645cabd3c0e531b4e4027fd3254fda0fa2e680a"
+    "fileHash": "sha256-ac4692baf189fc8b98d2e0fbd6f7b9c331ab22c9ca2c47cd192f36cc65a39e3f"
   },
   {
     "url": "https://raw.githubusercontent.com/aytzey/cs-kraptor/builds/AsyaAnimeleri.cs3",
