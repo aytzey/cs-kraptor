@@ -49,6 +49,12 @@ TARGETS = {
 
 # Exact smali edits applied after routing: (plugin, file, old, new). Each old text must occur once.
 FIXES = [
+    # HDFilmCehennemi's "Close" player now hides its stream behind a scripted POST; HdfPlayer runs it.
+    ("HDFilmCehennemi", "com/kraptor/HDFilmCehennemi.smali",
+     "Lcom/lagradost/cloudstream3/utils/ExtractorApiKt;->loadExtractor(Ljava/lang/String;Ljava/lang/String;"
+     "Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;",
+     "Lcom/kraptor/HdfPlayer;->load(Ljava/lang/String;Ljava/lang/String;"
+     "Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;"),
     # The 105 PeerPlayback hook runs on every entry of the loadLinks state machine. Kotlin re-enters
     # suspended methods with null arguments, so owns(null) threw after the first network call.
     ("HDFilmCehennemi", "com/kraptor/HDFilmCehennemi.smali",
@@ -111,9 +117,9 @@ def solver_smali(work):
     assert hashlib.sha256(OKHTTP.read_bytes()).hexdigest() == OKHTTP_SHA256
     classes = work / "solver-classes"
     run("javac", "--release", "8", "-nowarn", "-cp", f"{ANDROID}:{OKHTTP}", "-d", str(classes),
-        str(HERE / "CfSolver.java"), str(HERE / "WebViewKernel.java"), *map(str, (HERE / "stubs").rglob("*.java")))
+        str(HERE / "CfSolver.java"), str(HERE / "WebViewKernel.java"), str(HERE / "HdfPlayer.java"), *map(str, (HERE / "stubs").rglob("*.java")))
     stubs = work / "stubs.jar"
-    run("jar", "cf", str(stubs), "-C", str(classes), "com/lagradost")
+    run("jar", "cf", str(stubs), "-C", str(classes), "com/lagradost", "-C", str(classes), "kotlin")
     run("java", "-cp", str(D8), "com.android.tools.r8.D8", "--release", "--min-api", "23",
         "--lib", str(ANDROID), "--classpath", str(OKHTTP), "--classpath", str(stubs),
         "--output", str(work), *map(str, sorted((classes / "com/kraptor").glob("*.class"))))

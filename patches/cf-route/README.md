@@ -36,6 +36,20 @@ Requirement: a current system WebView. Cloudflare keeps WebView 101 (the Z1Mini'
 10 image) in a reload loop. The Z1Mini now bind-mounts Chromium SystemWebView 160 from
 `/data/local/webview` through `/vendor/etc/init/z1mini-webview.rc`.
 
+## HDFilmCehennemi "Close" player
+
+The hdfilmcehennemi.mobi embed no longer contains its stream URL. The page posts a fingerprint to
+`/video/embed/<id>/kn/` with jQuery (the server answers only `X-Requested-With: XMLHttpRequest`),
+decodes the reply in obfuscated JavaScript and calls `window.knKur(url, tracks)`. The bundled
+extractors (HdfilmConfig and its WebView fallback) returned nothing for these titles, so films
+offering only "Close" sources showed "Bağlantı bulunamadı".
+
+`HdfPlayer.java` replaces the `loadExtractor` call in `loadLinks` (same signature): embed URLs
+are fetched with a browser-like `Accept` header (the server answers 404 without one), run in an
+off-screen WebView with the embed URL as base, and `window.knAdres` / `window.knT` become an M3U8
+link and subtitles. Other iframes still go to CloudStream's `loadExtractor`. The server's broken
+`{rapidrame_id}` URL template is stripped. HDFilmCehennemi 109.
+
 ## Bundled WebView kernel (Android 10+)
 
 `WebViewKernel.java` gives devices with an outdated WebView (major < 130, or after the
@@ -57,6 +71,10 @@ challenge kept reloading) Chromium's own SystemWebView 160.0.8181.0 without root
 Verified with HDF's challenge page: Z1Mini Android 10 (system 101, also inside CloudStream with a
 film playing), emulators Android 11 (system 83), 12 (91), 13 (109), 14 (113), 15 (124) and
 16 (133, also inside CloudStream: solve in 2.4 s).
+
+Close player (HDFilmCehennemi 109, Z1Mini): "Karlar Düşerken Aşk" and "Merry Christmas Mr.
+Lawrence" (Close sources only, previously no links) and "Russell Brand: Open Secret" (Rapidrame and
+Close) played with advancing position and active audio output; extraction took 1.0–8.0 s per source.
 
 ## Removed from the catalog
 
